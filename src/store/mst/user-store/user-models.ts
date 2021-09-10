@@ -1,5 +1,5 @@
 import { Instance, types } from 'mobx-state-tree'
-import { INVITER_KEY } from '../../config'
+import { INVITER_KEY } from 'config'
 
 export const UserInviteModel = types.model('UserInvite').props({
   action: types.optional(types.string, ''),
