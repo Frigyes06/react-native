@@ -122,7 +122,7 @@ function Onboard(props) {
       console.log('inv:', inv)
       return (
         <main className='onboard'>
-          <Logo src='static/sphinx-white-logo.png' />
+          <Logo src='static/zion-dark-theme.png' />
           <Title>{inv.welcomeMessage}</Title>
           <InputWrap>
             <Input
@@ -149,7 +149,7 @@ function Onboard(props) {
     }
     return (
       <main className='onboard'>
-        <Logo src='static/sphinx-white-logo.png' />
+        <Logo src='static/zion-dark-theme.png' />
         {props.welcome && (
           <>
             <Title>Welcome</Title>
@@ -186,9 +186,9 @@ const Logo = styled.div`
   background-image: url(${(p) => p.src});
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  width: 120px;
-  height: 120px;
+  background-size: contain;
+  width: 340px;
+  height: 140px;
   margin-top: 64px;
 `
 const Title = styled.h1`
