@@ -1,7 +1,7 @@
 import { UserStore } from '../user-store'
-import { sleep } from '../../../utils/sleep'
-import * as api from '../../../api'
-import { randString } from '../../../utils/crypto/rand'
+import { sleep } from 'store/utils/sleep'
+import * as api from 'api'
+import { randString } from 'crypto/rand'
 
 export const generateToken = async (self: UserStore, pwd: string) => {
   if (api.relay === null && self.currentIP) {
@@ -9,7 +9,7 @@ export const generateToken = async (self: UserStore, pwd: string) => {
     await sleep(1)
   }
   try {
-    const token = randString(20)
+    const token = await randString(20)
     console.log('OK GEN TOKEN!', self.currentIP, pwd)
     const r = await api.relay.post(`contacts/tokens?pwd=${pwd}`, {
       token,

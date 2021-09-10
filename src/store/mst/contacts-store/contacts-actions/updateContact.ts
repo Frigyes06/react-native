@@ -1,5 +1,5 @@
 import { ContactsStore } from '../contacts-store'
-import { relay } from '../../../api'
+import { relay } from 'api'
 import { normalizeContact } from '../../normalize'
 
 export const updateContact = async (self: ContactsStore, id: any, v: any) => {

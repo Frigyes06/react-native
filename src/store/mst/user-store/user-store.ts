@@ -19,14 +19,10 @@ export const UserStoreModel = types
   })
   .extend(withEnvironment)
   .actions((self) => ({
-    finishInvite: async (): Promise<boolean> =>
-      await actions.finishInvite(self as UserStore),
-    generateToken: async (pwd: string): Promise<string> =>
-      await actions.generateToken(self as UserStore, pwd),
-    signupWithCode: async (code: string): Promise<ArrayObject> =>
-      await actions.signupWithCode(self as UserStore, code),
-    signupWithIP: async (ip: string): Promise<string | null> =>
-      await actions.signupWithIP(self as UserStore, ip),
+    finishInvite: async (): Promise<boolean> => await actions.finishInvite(self as UserStore),
+    generateToken: async (pwd: string): Promise<string> => await actions.generateToken(self as UserStore, pwd),
+    signupWithCode: async (code: string): Promise<ArrayObject> => await actions.signupWithCode(self as UserStore, code),
+    signupWithIP: async (ip: string): Promise<string | null> => await actions.signupWithIP(self as UserStore, ip),
     setAuthToken: (authToken: string) => {
       self.authToken = authToken
     },
@@ -49,5 +45,4 @@ type UserStoreType = Instance<typeof UserStoreModel>
 export interface UserStore extends UserStoreType {}
 type UserStoreSnapshotType = SnapshotOut<typeof UserStoreModel>
 export interface UserStoreSnapshot extends UserStoreSnapshotType {}
-export const createUserStoreDefaultModel = () =>
-  types.optional(UserStoreModel, {})
+export const createUserStoreDefaultModel = () => types.optional(UserStoreModel, {})

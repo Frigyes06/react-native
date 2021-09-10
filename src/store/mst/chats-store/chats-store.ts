@@ -16,14 +16,11 @@ export const ChatsStoreModel = types
       await actions.createTribe(self as ChatsStore, params),
     editTribe: async (params: actions.EditTribeParams): Promise<any> =>
       await actions.editTribe(self as ChatsStore, params),
-    getChats: async (): Promise<boolean> =>
-      await actions.getChats(self as ChatsStore),
+    getChats: async (): Promise<boolean> => await actions.getChats(self as ChatsStore),
     getTribeDetails: async (host: string, uuid: string): Promise<any> =>
       await actions.getTribeDetails(self as ChatsStore, host, uuid),
-    gotChat: async (chat: Chat): Promise<any> =>
-      await actions.gotChat(self as ChatsStore, chat),
-    joinDefaultTribe: async (): Promise<boolean> =>
-      await actions.joinDefaultTribe(self as ChatsStore),
+    gotChat: async (chat: Chat): Promise<any> => await actions.gotChat(self as ChatsStore, chat),
+    joinDefaultTribe: async (): Promise<boolean> => await actions.joinDefaultTribe(self as ChatsStore),
     joinTribe: async (params: actions.JoinTribeParams): Promise<boolean> =>
       await actions.joinTribe(self as ChatsStore, params),
     parseChat: (c): Chat => {
@@ -48,5 +45,4 @@ type ChatsStoreType = Instance<typeof ChatsStoreModel>
 export interface ChatsStore extends ChatsStoreType {}
 type ChatsStoreSnapshotType = SnapshotOut<typeof ChatsStoreModel>
 export interface ChatsStoreSnapshot extends ChatsStoreSnapshotType {}
-export const createChatsStoreDefaultModel = () =>
-  types.optional(ChatsStoreModel, {})
+export const createChatsStoreDefaultModel = () => types.optional(ChatsStoreModel, {})

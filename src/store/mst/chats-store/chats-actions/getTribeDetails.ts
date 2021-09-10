@@ -1,11 +1,7 @@
 import { ChatsStore } from '../chats-store'
-import { DEFAULT_TRIBE_SERVER } from '../../../config'
+import { DEFAULT_TRIBE_SERVER } from 'config'
 
-export const getTribeDetails = async (
-  self: ChatsStore,
-  host: string,
-  uuid: string
-) => {
+export const getTribeDetails = async (self: ChatsStore, host: string, uuid: string) => {
   if (!host || !uuid) return
   const theHost = host.includes('localhost') ? DEFAULT_TRIBE_SERVER : host
   try {

@@ -1,5 +1,5 @@
 import { UserStore } from '../user-store'
-import * as api from '../../../api'
+import * as api from 'api'
 
 export const finishInvite = async (self: UserStore) => {
   // if (!self.code || self.code === '') {

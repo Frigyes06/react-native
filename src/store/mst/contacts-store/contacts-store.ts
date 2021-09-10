@@ -10,8 +10,7 @@ export const ContactsStoreModel = types
   })
   .extend(withEnvironment)
   .actions((self) => ({
-    addContact: async (v: any): Promise<boolean> =>
-      await actions.addContact(self as ContactsStore, v),
+    addContact: async (v: any): Promise<boolean> => await actions.addContact(self as ContactsStore, v),
     updateContact: async (id: number, v: any): Promise<boolean> =>
       await actions.updateContact(self as ContactsStore, id, v),
     setContact(contact: Contact) {
@@ -26,5 +25,4 @@ type ContactsStoreType = Instance<typeof ContactsStoreModel>
 export interface ContactsStore extends ContactsStoreType {}
 type ContactsStoreSnapshotType = SnapshotOut<typeof ContactsStoreModel>
 export interface ContactsStoreSnapshot extends ContactsStoreSnapshotType {}
-export const createContactsStoreDefaultModel = () =>
-  types.optional(ContactsStoreModel, {})
+export const createContactsStoreDefaultModel = () => types.optional(ContactsStoreModel, {})

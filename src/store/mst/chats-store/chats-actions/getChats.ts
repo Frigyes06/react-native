@@ -1,5 +1,5 @@
 import { ChatsStore } from '../chats-store'
-import { relay } from '../../../api'
+import { relay } from 'api'
 
 export const getChats = async (self: ChatsStore) => {
   const chats = await relay.get('chats')

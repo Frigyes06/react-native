@@ -1,5 +1,5 @@
 import { ChatsStore } from '../chats-store'
-import { relay } from '../../../api'
+import { relay } from 'api'
 
 export const editTribe = async (self: ChatsStore, params: EditTribeParams) => {
   console.tron.display({

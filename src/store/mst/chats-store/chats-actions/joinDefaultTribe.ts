@@ -1,11 +1,8 @@
 import { ChatsStore } from '../chats-store'
-import { DEFAULT_TRIBE_SERVER, DEFAULT_TRIBE_UUID } from '../../../config'
+import { DEFAULT_TRIBE_SERVER, DEFAULT_TRIBE_UUID } from 'config'
 
 export const joinDefaultTribe = async (self: ChatsStore) => {
-  const params = await self.getTribeDetails(
-    DEFAULT_TRIBE_SERVER,
-    DEFAULT_TRIBE_UUID
-  )
+  const params = await self.getTribeDetails(DEFAULT_TRIBE_SERVER, DEFAULT_TRIBE_UUID)
   const r = await self.joinTribe({
     name: params.name,
     group_key: params.group_key,
