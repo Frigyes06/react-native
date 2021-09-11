@@ -18,7 +18,7 @@ export const HomeScreen: FC<StackScreenProps<NavigatorParamList, 'home'>> = obse
   return (
     <View style={{ position: 'absolute', backgroundColor: 'black', width: '100vw', height: '100vh' }}>
       <View testID='OnboardScreen' style={FULL}>
-        <GradientBackground colors={['#1a242f', '#141d27']} />
+        <GradientBackground colors={[theme.orange, theme.orangeSecondary]} />
         <Screen style={CONTAINER} preset='scroll' backgroundColor={color.transparent}>
           <Image source={logo} style={LOGO} />
           <Button
