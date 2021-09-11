@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Linking,
   ScrollView as KeyboardAwareScrollView,
+  ViewStyle,
 } from 'react-native'
 import { IconButton, ActivityIndicator } from 'react-native-paper'
 import { decode as atob } from 'base-64'
@@ -22,6 +23,7 @@ import QR from '../common/Accessories/QR'
 import PinCodeModal from '../common/Modals/PinCode'
 import Typography from '../common/Typography'
 import { SCREEN_HEIGHT } from '../../constants'
+import { GradientBackground } from 'components/common'
 
 type RouteParams = {
   Onboard: {
@@ -179,14 +181,16 @@ export default function Code(props) {
 
   return (
     <View style={{ ...styles.wrap, zIndex: z }} accessibilityLabel='onboard-code'>
+      <GradientBackground colors={[theme.orange, theme.orangeSecondary]} />
       <IconButton
         icon='arrow-left'
         color={theme.grey}
         size={26}
         style={styles.backArrow}
-        onPress={() => navigation.navigate('Home' as never)}
+        onPress={() => navigation.goBack()}
         accessibilityLabel='onboard-profile-back'
       />
+
       <KeyboardAwareScrollView contentContainerStyle={{ ...styles.content }} scrollEnabled={false}>
         <Typography
           style={{
@@ -295,7 +299,7 @@ export default function Code(props) {
   )
 }
 
-const styles = StyleSheet.create({
+const styles = {
   wrap: {
     flex: 1,
     position: 'absolute',
@@ -303,14 +307,15 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-  },
+    height: '100vh',
+  } as ViewStyle,
   gradient: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     height: '100%',
     width: '100%',
-  },
+  } as ViewStyle,
   content: {
     flex: 1,
     flexDirection: 'column',
@@ -318,19 +323,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: '100%',
     width: '100%',
-  },
+  } as ViewStyle,
   backArrow: {
     position: 'absolute',
     left: 15,
     top: 45,
-  },
+    zIndex: 9000,
+  } as ViewStyle,
   welcome: {
     color: 'white',
     fontSize: 48,
     fontWeight: 'bold',
     marginTop: 48,
     lineHeight: 48,
-  },
+  } as ViewStyle,
   input: {
     width: '100%',
     height: 70,
@@ -340,37 +346,37 @@ const styles = StyleSheet.create({
     paddingLeft: 30,
     paddingRight: 65,
     marginBottom: 50,
-  },
+  } as ViewStyle,
   inputWrap: {
     width: 320,
     maxWidth: '90%',
     position: 'relative',
     flexDirection: 'row',
     justifyContent: 'center',
-  },
+  } as ViewStyle,
   spinWrap: {
     height: 20,
-  },
+  } as ViewStyle,
   message: {
     position: 'absolute',
     bottom: 32,
     width: '80%',
     left: '10%',
     borderRadius: 10,
-  },
+  } as ViewStyle,
   wrong: {
     height: 150,
-  },
+  } as ViewStyle,
   wrongText: {
     margin: 24,
-  },
+  } as ViewStyle,
   error: {
     height: 70,
-  },
+  } as ViewStyle,
   errorText: {
     margin: 24,
-  },
-})
+  } as ViewStyle,
+}
 
 async function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
