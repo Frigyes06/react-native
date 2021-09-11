@@ -119,7 +119,7 @@
     "localforage": "^1.8.1",
     "lottie-ios": "3.1.8",
     "lottie-react-native": "^4.0.2",
-    "mobx": "^5.15.4",
+    "mobx": "^6.3.3",
     "mobx-persist": "^0.4.1",
     "mobx-react-lite": "^3.2.1",
     "mobx-state-tree": "^5.0.2",
