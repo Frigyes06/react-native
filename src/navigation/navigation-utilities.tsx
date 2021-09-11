@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import { BackHandler } from 'react-native'
 import { PartialState, NavigationState, NavigationAction, createNavigationContainerRef } from '@react-navigation/native'
+import { isDev } from 'store/utils/isDev'
+
+const __DEV__ = isDev
 
 /* eslint-disable */
 export const RootNavigation = {
@@ -105,7 +108,7 @@ export function useNavigationPersistence(storage: any, persistenceKey: string) {
 
   const restoreState = async () => {
     try {
-      const state = await storage.load(persistenceKey)
+      const state = await storage.getItem(persistenceKey)
       if (state) setInitialNavigationState(state)
     } finally {
       setIsRestored(true)
