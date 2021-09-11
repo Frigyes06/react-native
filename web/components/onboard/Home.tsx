@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useTheme } from 'store'
 import Typography from '../common/Typography'
 import Button from '../common/Button'
+import { GradientBackground } from 'components/common'
 
 export default function Home() {
   const theme = useTheme()
@@ -12,11 +13,14 @@ export default function Home() {
 
   return (
     <View style={{ ...styles.wrap, height: '100vh' }} accessibilityLabel='onboard-code'>
+      <GradientBackground colors={[theme.orange, theme.orangeSecondary]} />
       <View style={styles.content}>
         <View
           style={{
-            ...styles.imageWrapper,
             backgroundColor: theme.transparent,
+            paddingHorizontal: 30,
+            borderRadius: 30,
+            marginBottom: 45,
           }}
         >
           <Image
@@ -25,39 +29,40 @@ export default function Home() {
             resizeMode={'contain'}
           />
         </View>
-
-        <Button
-          color={theme.orangeSecondary}
-          w='70%'
-          size='large'
-          style={{
-            borderWidth: 2,
-            borderColor: theme.white,
-          }}
-          onPress={() => navigation.navigate('Invite' as never)}
-        >
-          <Typography color={theme.white} fw='700'>
-            Subscribe to the waitlist
-          </Typography>
-        </Button>
-        <Button
-          fw='500'
-          color={theme.lightGrey}
-          w='70%'
-          style={{ marginTop: 15 }}
-          onPress={() => navigation.navigate('Onboard' as never, { codeType: 'invite' } as never)}
-        >
-          I have an invite code
-        </Button>
-        <Button
-          fw='500'
-          color={theme.lightGrey}
-          w='70%'
-          style={{ marginTop: 15 }}
-          onPress={() => navigation.navigate('Onboard' as never, { codeType: 'backup' } as never)}
-        >
-          I have a backup code
-        </Button>
+        <View style={{ width: 500, justifyContent: 'center', alignItems: 'center' }}>
+          <Button
+            color={theme.orangeSecondary}
+            w='70%'
+            size='large'
+            style={{
+              borderWidth: 2,
+              borderColor: theme.white,
+            }}
+            onPress={() => navigation.navigate('Invite' as never)}
+          >
+            <Typography color={theme.white} fw='700'>
+              Subscribe to the waitlist
+            </Typography>
+          </Button>
+          <Button
+            fw='500'
+            color={theme.lightGrey}
+            w='70%'
+            style={{ marginTop: 15 }}
+            onPress={() => navigation.navigate('Onboard' as never, { codeType: 'invite' } as never)}
+          >
+            I have an invite code
+          </Button>
+          <Button
+            fw='500'
+            color={theme.lightGrey}
+            w='70%'
+            style={{ marginTop: 15 }}
+            onPress={() => navigation.navigate('Onboard' as never, { codeType: 'backup' } as never)}
+          >
+            I have a backup code
+          </Button>
+        </View>
       </View>
     </View>
   )
