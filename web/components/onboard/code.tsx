@@ -32,7 +32,8 @@ type RouteParams = {
 }
 
 export default function Code(props) {
-  const { onDone, z, onRestore } = props
+  const { onBack, onDone, z, onRestore } = props
+  console.log('onBack:', onBack)
   const { user } = useStores()
   const theme = useTheme()
   const navigation = useNavigation()
@@ -187,7 +188,7 @@ export default function Code(props) {
         color={theme.grey}
         size={26}
         style={styles.backArrow}
-        onPress={() => navigation.goBack()}
+        onPress={onBack}
         accessibilityLabel='onboard-profile-back'
       />
 
