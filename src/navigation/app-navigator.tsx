@@ -5,11 +5,13 @@
  * and a "main" flow which the user will use once logged in.
  */
 import React from 'react'
-import { useColorScheme } from 'react-native'
+// import { useColorScheme } from 'react-native'
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { HomeScreen, OnboardScreen } from '../screens'
+// import { HomeScreen, OnboardScreen } from '../screens'
 import { navigationRef } from './navigation-utilities'
+
+const Nothin = () => <h1>wat</h1>
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -42,8 +44,8 @@ const AppStack = () => {
       }}
       initialRouteName='home'
     >
-      <Stack.Screen name='home' component={HomeScreen} />
-      <Stack.Screen name='onboard' component={OnboardScreen} />
+      <Stack.Screen name='home' component={Nothin} />
+      <Stack.Screen name='onboard' component={Nothin} />
     </Stack.Navigator>
   )
 }
@@ -51,7 +53,8 @@ const AppStack = () => {
 interface NavigationProps extends Partial<React.ComponentProps<typeof NavigationContainer>> {}
 
 export const AppNavigator = (props: NavigationProps) => {
-  const colorScheme = useColorScheme()
+  // const colorScheme = useColorScheme()
+  const colorScheme = 'dark'
   return (
     <NavigationContainer ref={navigationRef} theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme} {...props}>
       <AppStack />
