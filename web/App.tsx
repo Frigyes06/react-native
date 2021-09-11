@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import { AppNavigator, useNavigationPersistence } from 'navigation'
 import { RootStore, RootStoreProvider, setupRootStore } from 'stores'
+import { webStorage as storage } from 'store/storage'
+
+export const NAVIGATION_PERSISTENCE_KEY = 'NAVIGATION_STATE_1'
 
 const App = () => {
   const [rootStore, setRootStore] = useState<RootStore | undefined>(undefined)
