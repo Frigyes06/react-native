@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import { Platform } from 'react-native'
 import { AppNavigator, useNavigationPersistence } from 'navigation'
 import { RootStore, RootStoreProvider, setupRootStore } from 'stores'
+import { Provider as PaperProvider } from 'react-native-paper'
 import { webStorage as storage } from 'store/storage'
+import { paperTheme } from 'src/theme'
+import { useTheme } from 'store'
 
 export const NAVIGATION_PERSISTENCE_KEY = 'NAVIGATION_STATE_2'
 
@@ -27,15 +31,30 @@ const App = () => {
   // In iOS: application:didFinishLaunchingWithOptions:
   // In Android: https://stackoverflow.com/a/45838109/204044
   // You can replace with your own loading component if you wish.
+  const theme = useTheme()
+  const pTheme = paperTheme(theme)
+
   if (!rootStore) return null //  || !isNavigationStateRestored
 
   // otherwise, we're ready to render the app
   return (
-    <RootStoreProvider value={rootStore}>
-      <AppNavigator
-      // initialState={initialNavigationState} onStateChange={onNavigationStateChange}
-      />
-    </RootStoreProvider>
+    <PaperProvider theme={pTheme}>
+      <React.Fragment>
+        {Platform.OS === 'web' ? (
+          <style type='text/css'>
+            {`@font-face {
+                font-family: 'MaterialCommunityIcons';
+                src: url(${require('react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf')}) format('truetype');
+              }`}
+          </style>
+        ) : null}
+        <RootStoreProvider value={rootStore}>
+          <AppNavigator
+          // initialState={initialNavigationState} onStateChange={onNavigationStateChange}
+          />
+        </RootStoreProvider>
+      </React.Fragment>
+    </PaperProvider>
   )
 }
 
