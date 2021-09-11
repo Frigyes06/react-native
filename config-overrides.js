@@ -19,6 +19,8 @@ module.exports = override(
     path.resolve('web'),
     path.resolve('node_modules/@ovaeasy/react-native-vector-icons'),
     path.resolve('node_modules/expo-linear-gradient'),
+    path.resolve('node_modules/react-native-animatable'),
+    // path.resolve('node_modules/react-native-camera'),
   ]),
   addBabelPlugin('@babel/plugin-proposal-class-properties'),
   addWebpackExternals({
