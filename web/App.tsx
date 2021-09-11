@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { RootStore, RootStoreProvider, setupRootStore } from 'store/mst'
+import { RootStore, RootStoreProvider, setupRootStore } from 'stores'
 
 const App = () => {
   const [rootStore, setRootStore] = useState<RootStore | undefined>(undefined)

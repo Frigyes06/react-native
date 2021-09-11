@@ -5,7 +5,7 @@ const __DEV__ = isDev
 
 let ReactotronDev
 if (isDev) {
-  const { Reactotron } = require('../../services/reactotron')
+  const { Reactotron } = require('../services/reactotron')
   ReactotronDev = Reactotron
 }
 

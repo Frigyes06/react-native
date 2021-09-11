@@ -29,6 +29,7 @@ module.exports = override(
     ['realm']: path.resolve(__dirname, './src/realm'),
     ['services']: path.resolve(__dirname, './src/services'),
     ['store']: path.resolve(__dirname, './src/store'),
+    ['stores']: path.resolve(__dirname, './src/stores'),
     ['theme']: path.resolve(__dirname, './src/theme'),
     ['types']: path.resolve(__dirname, './src/types'),
   })
