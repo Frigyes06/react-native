@@ -37,6 +37,7 @@ const App = () => {
   if (!rootStore) return null //  || !isNavigationStateRestored
 
   // otherwise, we're ready to render the app
+  // paper icon shaz is from: https://callstack.github.io/react-native-paper/using-on-the-web.html
   return (
     <PaperProvider theme={pTheme}>
       <React.Fragment>
