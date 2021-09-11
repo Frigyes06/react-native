@@ -10,6 +10,7 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { HomeScreen } from '../screens' // , OnboardScreen
 import { navigationRef } from './navigation-utilities'
+import Auth from 'components/Navigation/Auth'
 
 const Nothin = () => <h1>wat</h1>
 
@@ -44,7 +45,8 @@ const AppStack = () => {
       }}
       initialRouteName='home'
     >
-      <Stack.Screen name='home' component={HomeScreen} />
+      <Stack.Screen name='home' component={Auth} />
+      {/* <Stack.Screen name='home' component={HomeScreen} /> */}
       <Stack.Screen name='onboard' component={Nothin} />
     </Stack.Navigator>
   )
