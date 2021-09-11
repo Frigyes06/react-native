@@ -1,9 +1,15 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, TextInput, TouchableOpacity, Linking } from 'react-native'
+import {
+  StyleSheet,
+  View,
+  TextInput,
+  TouchableOpacity,
+  Linking,
+  ScrollView as KeyboardAwareScrollView,
+} from 'react-native'
 import { IconButton, ActivityIndicator } from 'react-native-paper'
-import RadialGradient from 'react-native-radial-gradient'
 import { decode as atob } from 'base-64'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+// import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native'
 
 import { useStores, useTheme } from 'store'
@@ -173,107 +179,99 @@ export default function Code(props) {
 
   return (
     <View style={{ ...styles.wrap, zIndex: z }} accessibilityLabel='onboard-code'>
-      <RadialGradient
-        style={styles.gradient}
-        colors={[theme.gradient, theme.gradient2]}
-        stops={[0.1, 1]}
-        center={[80, 40]}
-        radius={400}
-      >
-        <IconButton
-          icon='arrow-left'
-          color={theme.grey}
-          size={26}
-          style={styles.backArrow}
-          onPress={() => navigation.navigate('Home' as never)}
-          accessibilityLabel='onboard-profile-back'
-        />
-        <KeyboardAwareScrollView contentContainerStyle={{ ...styles.content }} scrollEnabled={false}>
-          <Typography
+      <IconButton
+        icon='arrow-left'
+        color={theme.grey}
+        size={26}
+        style={styles.backArrow}
+        onPress={() => navigation.navigate('Home' as never)}
+        accessibilityLabel='onboard-profile-back'
+      />
+      <KeyboardAwareScrollView contentContainerStyle={{ ...styles.content }} scrollEnabled={false}>
+        <Typography
+          style={{
+            marginBottom: 40,
+          }}
+          size={48}
+          color={theme.white}
+          fw='600'
+          lh={48}
+        >
+          Welcome
+        </Typography>
+        <Typography
+          color={theme.white}
+          size={20}
+          textAlign='center'
+          lh={29}
+          style={{
+            marginTop: 15,
+            maxWidth: 240,
+          }}
+        >
+          {`Paste the ${route.params?.codeType === 'invite' ? 'invitation' : 'backup'} key or scan the QR code`}
+        </Typography>
+        <View style={styles.inputWrap} accessibilityLabel='onboard-code-input-wrap'>
+          <TextInput
+            autoCorrect={false}
+            accessibilityLabel='onboard-code-input'
+            placeholder='Enter Code ...'
             style={{
-              marginBottom: 40,
+              ...styles.input,
+              backgroundColor: theme.white,
+              borderColor: theme.white,
             }}
-            size={48}
-            color={theme.white}
-            fw='600'
-            lh={48}
-          >
-            Welcome
-          </Typography>
-          <Typography
-            color={theme.white}
-            size={20}
-            textAlign='center'
-            lh={29}
-            style={{
-              marginTop: 15,
-              maxWidth: 240,
+            placeholderTextColor={theme.greySecondary}
+            value={code}
+            onChangeText={(text) => setCode(text)}
+            onBlur={() => checkInvite(code)}
+            onFocus={() => {
+              if (wrong) setWrong('')
             }}
-          >
-            {`Paste the ${route.params?.codeType === 'invite' ? 'invitation' : 'backup'} key or scan the QR code`}
-          </Typography>
-          <View style={styles.inputWrap} accessibilityLabel='onboard-code-input-wrap'>
-            <TextInput
-              autoCorrect={false}
-              accessibilityLabel='onboard-code-input'
-              placeholder='Enter Code ...'
-              style={{
-                ...styles.input,
-                backgroundColor: theme.white,
-                borderColor: theme.white,
-              }}
-              placeholderTextColor={theme.greySecondary}
-              value={code}
-              onChangeText={(text) => setCode(text)}
-              onBlur={() => checkInvite(code)}
-              onFocus={() => {
-                if (wrong) setWrong('')
-              }}
-            />
-            <IconButton
-              accessibilityLabel='onboard-code-qr-button'
-              icon='qrcode-scan'
-              color={theme.grey}
-              size={28}
-              style={{ position: 'absolute', right: 12, top: 38 }}
-              onPress={() => setScanning(true)}
-            />
-          </View>
-        </KeyboardAwareScrollView>
+          />
+          <IconButton
+            accessibilityLabel='onboard-code-qr-button'
+            icon='qrcode-scan'
+            color={theme.grey}
+            size={28}
+            style={{ position: 'absolute', right: 12, top: 38 }}
+            onPress={() => setScanning(true)}
+          />
+        </View>
+      </KeyboardAwareScrollView>
 
-        <View style={styles.spinWrap}>{checking && <ActivityIndicator animating={true} color='white' />}</View>
-        {(wrong ? true : false) && (
-          <View
-            style={{
-              ...styles.message,
-              ...styles.wrong,
-              backgroundColor: theme.transparent,
-            }}
-          >
-            <Typography style={styles.wrongText} color={theme.white} textAlign='center'>
-              {wrong}
+      <View style={styles.spinWrap}>{checking && <ActivityIndicator animating={true} color='white' />}</View>
+      {(wrong ? true : false) && (
+        <View
+          style={{
+            ...styles.message,
+            ...styles.wrong,
+            backgroundColor: theme.transparent,
+          }}
+        >
+          <Typography style={styles.wrongText} color={theme.white} textAlign='center'>
+            {wrong}
+          </Typography>
+          <TouchableOpacity onPress={() => Linking.openURL(DEFAULT_HOST)}>
+            <Typography size={16} fw='500' color={theme.purple} textAlign='center'>
+              {DEFAULT_HOST}
             </Typography>
-            <TouchableOpacity onPress={() => Linking.openURL(DEFAULT_HOST)}>
-              <Typography size={16} fw='500' color={theme.purple} textAlign='center'>
-                {DEFAULT_HOST}
-              </Typography>
-            </TouchableOpacity>
-          </View>
-        )}
-        {(error ? true : false) && (
-          <View
-            style={{
-              ...styles.message,
-              ...styles.error,
-              backgroundColor: theme.transparent,
-            }}
-          >
-            <Typography style={styles.errorText} color={theme.white} textAlign='center'>
-              {error}
-            </Typography>
-          </View>
-        )}
-      </RadialGradient>
+          </TouchableOpacity>
+        </View>
+      )}
+      {(error ? true : false) && (
+        <View
+          style={{
+            ...styles.message,
+            ...styles.error,
+            backgroundColor: theme.transparent,
+          }}
+        >
+          <Typography style={styles.errorText} color={theme.white} textAlign='center'>
+            {error}
+          </Typography>
+        </View>
+      )}
 
       {scanning && (
         <QR

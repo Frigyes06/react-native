@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import { View, StyleSheet, TextInput } from 'react-native'
+import { View, StyleSheet, TextInput, ScrollView as KeyboardAwareScrollView } from 'react-native'
 import { IconButton, ActivityIndicator, Snackbar } from 'react-native-paper'
-import RadialGradient from 'react-native-radial-gradient'
 import Toast from 'react-native-simple-toast'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+// import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { useNavigation } from '@react-navigation/native'
 
 import { useStores, useTheme } from 'store'
@@ -66,116 +65,108 @@ export default function Invite(props) {
 
   return (
     <View style={styles.wrap} accessibilityLabel='request-invite'>
-      <RadialGradient
-        style={styles.gradient}
-        colors={[theme.gradient, theme.gradient2]}
-        stops={[0.1, 1]}
-        center={[80, 40]}
-        radius={400}
-      >
-        <IconButton
-          icon='arrow-left'
-          color={theme.grey}
-          size={26}
-          style={styles.backArrow}
-          onPress={() => navigation.navigate('Home' as never)}
-          accessibilityLabel='onboard-profile-back'
-        />
+      <IconButton
+        icon='arrow-left'
+        color={theme.grey}
+        size={26}
+        style={styles.backArrow}
+        onPress={() => navigation.navigate('Home' as never)}
+        accessibilityLabel='onboard-profile-back'
+      />
 
-        <KeyboardAwareScrollView contentContainerStyle={{ ...styles.content }} scrollEnabled={false}>
-          <Typography
+      <KeyboardAwareScrollView contentContainerStyle={{ ...styles.content }} scrollEnabled={false}>
+        <Typography
+          style={{
+            marginBottom: 10,
+          }}
+          size={48}
+          color={theme.white}
+          fw='600'
+          lh={48}
+        >
+          Welcome
+        </Typography>
+        <Typography
+          color={theme.white}
+          size={20}
+          textAlign='center'
+          lh={29}
+          style={{
+            marginTop: 15,
+            maxWidth: 270,
+          }}
+        >
+          Enter your email and we will add you to the waitlist.
+        </Typography>
+        <View style={styles.inputWrap} accessibilityLabel='onboard-code-input-wrap'>
+          <TextInput
+            autoCorrect={false}
+            accessibilityLabel='onboard-code-input'
+            placeholder='Enter Email'
+            autoCapitalize='none'
             style={{
-              marginBottom: 10,
-            }}
-            size={48}
-            color={theme.white}
-            fw='600'
-            lh={48}
-          >
-            Welcome
-          </Typography>
-          <Typography
-            color={theme.white}
-            size={20}
-            textAlign='center'
-            lh={29}
-            style={{
-              marginTop: 15,
-              maxWidth: 270,
-            }}
-          >
-            Enter your email and we will add you to the waitlist.
-          </Typography>
-          <View style={styles.inputWrap} accessibilityLabel='onboard-code-input-wrap'>
-            <TextInput
-              autoCorrect={false}
-              accessibilityLabel='onboard-code-input'
-              placeholder='Enter Email'
-              autoCapitalize='none'
-              style={{
-                ...styles.input,
-                backgroundColor: theme.white,
-                borderColor: theme.white,
-              }}
-              placeholderTextColor={theme.greySecondary}
-              value={email}
-              onChangeText={(text) => setEmail(text)}
-              // onBlur={() => submitEmail(email)}
-              onFocus={() => {
-                if (wrong) setWrong('')
-              }}
-            />
-          </View>
-          <Button
-            color={theme.primary}
-            w={200}
-            size='large'
-            style={{
-              borderWidth: 2,
+              ...styles.input,
+              backgroundColor: theme.white,
               borderColor: theme.white,
             }}
-            // onPress={submitEmail}
-            onPress={() => submitEmail(email)}
-            disabled={checking}
-          >
-            <Typography color={theme.white} fw='700'>
-              Subscribe
-            </Typography>
-          </Button>
-          <View style={styles.spinWrap}>{checking && <ActivityIndicator animating={true} color={theme.white} />}</View>
-        </KeyboardAwareScrollView>
+            placeholderTextColor={theme.greySecondary}
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+            // onBlur={() => submitEmail(email)}
+            onFocus={() => {
+              if (wrong) setWrong('')
+            }}
+          />
+        </View>
+        <Button
+          color={theme.primary}
+          w={200}
+          size='large'
+          style={{
+            borderWidth: 2,
+            borderColor: theme.white,
+          }}
+          // onPress={submitEmail}
+          onPress={() => submitEmail(email)}
+          disabled={checking}
+        >
+          <Typography color={theme.white} fw='700'>
+            Subscribe
+          </Typography>
+        </Button>
+        <View style={styles.spinWrap}>{checking && <ActivityIndicator animating={true} color={theme.white} />}</View>
+      </KeyboardAwareScrollView>
 
-        {(wrong ? true : false) && (
-          <View
+      {(wrong ? true : false) && (
+        <View
+          style={{
+            ...styles.message,
+            backgroundColor: theme.transparent,
+          }}
+        >
+          <Typography style={{ margin: 24 }} color={theme.white} textAlign='center'>
+            {wrong}
+          </Typography>
+        </View>
+      )}
+      {(error ? true : false) && (
+        <View
+          style={{
+            ...styles.message,
+            backgroundColor: theme.transparent,
+          }}
+        >
+          <Typography
             style={{
-              ...styles.message,
-              backgroundColor: theme.transparent,
+              margin: 24,
             }}
+            color={theme.white}
+            textAlign='center'
           >
-            <Typography style={{ margin: 24 }} color={theme.white} textAlign='center'>
-              {wrong}
-            </Typography>
-          </View>
-        )}
-        {(error ? true : false) && (
-          <View
-            style={{
-              ...styles.message,
-              backgroundColor: theme.transparent,
-            }}
-          >
-            <Typography
-              style={{
-                margin: 24,
-              }}
-              color={theme.white}
-              textAlign='center'
-            >
-              {error}
-            </Typography>
-          </View>
-        )}
-      </RadialGradient>
+            {error}
+          </Typography>
+        </View>
+      )}
     </View>
   )
 }

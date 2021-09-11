@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
-import RadialGradient from 'react-native-radial-gradient'
 import { ActivityIndicator } from 'react-native-paper'
 
 import { useStores, useTheme } from 'store'
@@ -48,79 +47,71 @@ export default function Ready(props) {
 
   return (
     <Slider z={z} show={show} accessibilityLabel='onboard-ready'>
-      <RadialGradient
-        style={styles.gradient}
-        colors={[theme.gradient, theme.gradient2]}
-        stops={[0.1, 1]}
-        center={[80, 40]}
-        radius={400}
-      >
-        <View style={styles.titleWrap} accessibilityLabel='onboard-ready-title'>
-          <View style={styles.titleRow}>
-            <Typography size={40} color={theme.white}>
-              You're
-            </Typography>
-            <Typography
-              style={{
-                marginLeft: 10,
-                marginRight: 10,
-              }}
-              size={40}
-              color={theme.white}
-              fw='600'
-            >
-              ready
-            </Typography>
-          </View>
-          <View style={styles.titleRow}>
-            <Typography size={40} color={theme.white} lh={50}>
-              to use Zion
-            </Typography>
-          </View>
-        </View>
-        <View style={styles.msgWrap} accessibilityLabel='onboard-ready-message'>
-          <View style={styles.msgRow}>
-            <Typography size={20} color={theme.white} textAlign='center' lh={28}>
-              You can send messages
-            </Typography>
-          </View>
-          <View style={styles.msgRow}>
-            <Typography size={20} color={theme.white} textAlign='center' lh={28}>
-              spend
-            </Typography>
-            <Typography style={styles.msgBold} size={20} color={theme.white} lh={28} fw='600'>
-              1000 sats,
-            </Typography>
-            <Typography size={20} color={theme.white} textAlign='center' lh={28}>
-              or receive
-            </Typography>
-          </View>
-          <View style={styles.msgRow}>
-            <Typography size={20} color={theme.white} textAlign='center' lh={28}>
-              up to
-            </Typography>
-            <Typography style={styles.msgBold} size={20} color={theme.white} lh={28} fw='600'>
-              10000 sats
-            </Typography>
-          </View>
-        </View>
-        <View style={styles.buttonWrap} accessibilityLabel='onboard-ready-button-wrap'>
-          <Button
-            accessibilityLabel='onboard-ready-button'
-            onPress={finish}
+      <View style={styles.titleWrap} accessibilityLabel='onboard-ready-title'>
+        <View style={styles.titleRow}>
+          <Typography size={40} color={theme.white}>
+            You're
+          </Typography>
+          <Typography
+            style={{
+              marginLeft: 10,
+              marginRight: 10,
+            }}
+            size={40}
             color={theme.white}
-            size='large'
-            w='75%'
-            h={55}
-            round={40}
-            fs={15}
+            fw='600'
           >
-            {loading && <ActivityIndicator animating={loading} color={theme.grey} size={18} />}
-            {loading && <View style={{ width: 12, height: 1 }}></View>}
-            Finish
-          </Button>
+            ready
+          </Typography>
         </View>
-      </RadialGradient>
+        <View style={styles.titleRow}>
+          <Typography size={40} color={theme.white} lh={50}>
+            to use Zion
+          </Typography>
+        </View>
+      </View>
+      <View style={styles.msgWrap} accessibilityLabel='onboard-ready-message'>
+        <View style={styles.msgRow}>
+          <Typography size={20} color={theme.white} textAlign='center' lh={28}>
+            You can send messages
+          </Typography>
+        </View>
+        <View style={styles.msgRow}>
+          <Typography size={20} color={theme.white} textAlign='center' lh={28}>
+            spend
+          </Typography>
+          <Typography style={styles.msgBold} size={20} color={theme.white} lh={28} fw='600'>
+            1000 sats,
+          </Typography>
+          <Typography size={20} color={theme.white} textAlign='center' lh={28}>
+            or receive
+          </Typography>
+        </View>
+        <View style={styles.msgRow}>
+          <Typography size={20} color={theme.white} textAlign='center' lh={28}>
+            up to
+          </Typography>
+          <Typography style={styles.msgBold} size={20} color={theme.white} lh={28} fw='600'>
+            10000 sats
+          </Typography>
+        </View>
+      </View>
+      <View style={styles.buttonWrap} accessibilityLabel='onboard-ready-button-wrap'>
+        <Button
+          accessibilityLabel='onboard-ready-button'
+          onPress={finish}
+          color={theme.white}
+          size='large'
+          w='75%'
+          h={55}
+          round={40}
+          fs={15}
+        >
+          {loading && <ActivityIndicator animating={loading} color={theme.grey} size={18} />}
+          {loading && <View style={{ width: 12, height: 1 }}></View>}
+          Finish
+        </Button>
+      </View>
     </Slider>
   )
 }

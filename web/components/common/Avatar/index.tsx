@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, View, Text, Image } from 'react-native'
+import { StyleSheet, View, Text, Image as FastImage } from 'react-native'
 import { Avatar as PaperAvatar } from 'react-native-paper'
-import FastImage from 'react-native-fast-image'
+// import FastImage from 'react-native-fast-image'
 
 import { useStores, useTheme } from 'store'
 import { useAvatarColor } from 'store/hooks/msg'
@@ -70,7 +70,8 @@ export default function Avatar(props) {
         <FastImage
           source={{ uri: photo }}
           style={{ width: size, height: size, borderRadius }}
-          resizeMode={FastImage.resizeMode.cover}
+          // resizeMode={FastImage.resizeMode.cover}
+          resizeMode='cover'
         />
       </View>
     )

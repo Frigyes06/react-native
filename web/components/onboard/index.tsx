@@ -5,21 +5,21 @@ import { observer } from 'mobx-react-lite'
 import { useStores } from 'store'
 import Code from './code'
 import Welcome from './welcome'
-import NameAndKey from './nameAndKey'
-import Ready from './ready'
-import PIN from './choosePIN'
-import ProfilePic from './profilePic'
-import SuggestToUserToBackupTheirKeys from './suggestToUserToBackupTheirKeys'
+// import NameAndKey from './nameAndKey'
+// import Ready from './ready'
+// import PIN from './choosePIN'
+// import ProfilePic from './profilePic'
+// import SuggestToUserToBackupTheirKeys from './suggestToUserToBackupTheirKeys'
 // TODO: remove this lien import Backup from './Backup'
 
 const steps = [
   Code, // scan or enter code, create ip (from invite server), create auth_token in Relay
   Welcome, // create inviter contact (relay)
-  PIN, // set pin
-  NameAndKey, // set my nickname (and RSA pubkey!)
-  SuggestToUserToBackupTheirKeys, // Presents a a video saying to user backup their keys
-  ProfilePic, // SuggestToUserToBackupTheirKeys
-  Ready, // set my profile pic
+  // PIN, // set pin
+  // NameAndKey, // set my nickname (and RSA pubkey!)
+  // SuggestToUserToBackupTheirKeys, // Presents a a video saying to user backup their keys
+  // ProfilePic, // SuggestToUserToBackupTheirKeys
+  // Ready, // set my profile pic
 ]
 
 const OnBoard = observer(() => {

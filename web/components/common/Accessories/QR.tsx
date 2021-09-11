@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, Modal } from 'react-native'
+import { StyleSheet, View, Modal, ScrollView as KeyboardAwareScrollView } from 'react-native'
 import { TextInput } from 'react-native-paper'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+// import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 import { useTheme } from 'store'
 import { SCREEN_HEIGHT } from '../../../constants'
@@ -55,16 +55,16 @@ export default function QR({
       <View style={{ ...styles.wrap, height: h, backgroundColor: theme.bg }}>
         <ModalHeader title='Scan QR Code' onClose={onCancel} />
         <KeyboardAwareScrollView
-          extraScrollHeight={120} // 70 + 50
+          // extraScrollHeight={120} // 70 + 50
           contentContainerStyle={{ ...styles.content }}
           scrollEnabled={false}
         >
-          <QRScanner
+          {/* <QRScanner
             smaller
             height={scannerH}
             scanned={scanned ? true : false}
             handleBarCodeScanned={handleBarCodeScanned}
-          />
+          /> */}
           {showPaster && (
             <>
               <View style={{ ...styles.inputWrap, backgroundColor: theme.bg }}>

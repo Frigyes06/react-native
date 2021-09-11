@@ -1,6 +1,5 @@
 import React from 'react'
 import { Image, StyleSheet, View } from 'react-native'
-import RadialGradient from 'react-native-radial-gradient'
 import { useNavigation } from '@react-navigation/native'
 
 import { useTheme } from 'store'
@@ -12,62 +11,54 @@ export default function Home() {
   const navigation = useNavigation()
 
   return (
-    <View style={{ ...styles.wrap }} accessibilityLabel='onboard-code'>
-      <RadialGradient
-        style={styles.gradient}
-        colors={[theme.orange, theme.orangeSecondary]}
-        stops={[0.1, 1]}
-        center={[80, 40]}
-        radius={400}
-      >
-        <View style={styles.content}>
-          <View
-            style={{
-              ...styles.imageWrapper,
-              backgroundColor: theme.transparent,
-            }}
-          >
-            <Image
-              source={require('../../assets/zion-dark-theme.png')}
-              style={{ width: 140, height: 100 }}
-              resizeMode={'contain'}
-            />
-          </View>
-
-          <Button
-            color={theme.orangeSecondary}
-            w='70%'
-            size='large'
-            style={{
-              borderWidth: 2,
-              borderColor: theme.white,
-            }}
-            onPress={() => navigation.navigate('Invite' as never)}
-          >
-            <Typography color={theme.white} fw='700'>
-              Subscribe to the waitlist
-            </Typography>
-          </Button>
-          <Button
-            fw='500'
-            color={theme.lightGrey}
-            w='70%'
-            style={{ marginTop: 15 }}
-            onPress={() => navigation.navigate('Onboard' as never, { codeType: 'invite' } as never)}
-          >
-            I have an invite code
-          </Button>
-          <Button
-            fw='500'
-            color={theme.lightGrey}
-            w='70%'
-            style={{ marginTop: 15 }}
-            onPress={() => navigation.navigate('Onboard' as never, { codeType: 'backup' } as never)}
-          >
-            I have a backup code
-          </Button>
+    <View style={{ ...styles.wrap, height: '100vh' }} accessibilityLabel='onboard-code'>
+      <View style={styles.content}>
+        <View
+          style={{
+            ...styles.imageWrapper,
+            backgroundColor: theme.transparent,
+          }}
+        >
+          <Image
+            source={require('../../assets/zion-dark-theme.png')}
+            style={{ width: 140, height: 100 }}
+            resizeMode={'contain'}
+          />
         </View>
-      </RadialGradient>
+
+        <Button
+          color={theme.orangeSecondary}
+          w='70%'
+          size='large'
+          style={{
+            borderWidth: 2,
+            borderColor: theme.white,
+          }}
+          onPress={() => navigation.navigate('Invite' as never)}
+        >
+          <Typography color={theme.white} fw='700'>
+            Subscribe to the waitlist
+          </Typography>
+        </Button>
+        <Button
+          fw='500'
+          color={theme.lightGrey}
+          w='70%'
+          style={{ marginTop: 15 }}
+          onPress={() => navigation.navigate('Onboard' as never, { codeType: 'invite' } as never)}
+        >
+          I have an invite code
+        </Button>
+        <Button
+          fw='500'
+          color={theme.lightGrey}
+          w='70%'
+          style={{ marginTop: 15 }}
+          onPress={() => navigation.navigate('Onboard' as never, { codeType: 'backup' } as never)}
+        >
+          I have a backup code
+        </Button>
+      </View>
     </View>
   )
 }
