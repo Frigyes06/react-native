@@ -26,6 +26,7 @@ module.exports = override(
     ['crypto']: path.resolve(__dirname, './src/crypto'),
     ['hooks']: path.resolve(__dirname, './src/hooks'),
     ['lib']: path.resolve(__dirname, './src/lib'),
+    ['navigation']: path.resolve(__dirname, './src/navigation'),
     ['realm']: path.resolve(__dirname, './src/realm'),
     ['services']: path.resolve(__dirname, './src/services'),
     ['store']: path.resolve(__dirname, './src/store'),

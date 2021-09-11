@@ -16,6 +16,8 @@
       "crypto/*": ["src/crypto/*"],
       "hooks": ["src/hooks"],
       "hooks/*": ["src/hooks/*"],
+      "navigation": ["src/navigation"],
+      "navigation/*": ["src/navigation/*"],
       "realm": ["src/realm"],
       "realm/*": ["src/realm/*"],
       "services": ["src/services"],
