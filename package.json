@@ -9,7 +9,7 @@
     "start": "react-native start",
     "android": "BABEL_ENV=dev react-native run-android && adb logcat *:S ReactNative:V ReactNativeJS:V",
     "ios": "react-native run-ios",
-    "web": "react-app-rewired start",
+    "web": "BROWSER=none react-app-rewired start",
     "build": "react-app-rewired build",
     "jetify": "jetify",
     "xcode": "open ios/Chat.xcworkspace",
