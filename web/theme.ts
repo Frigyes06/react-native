@@ -1,4 +1,8 @@
 const theme = {
+  white: '#ffffff',
+  orange: '#f0665b',
+  orangeSecondary: '#e45e53',
+  lightGrey: '#f5f6f8',
   bg: '#1a242f',
   primary: '#6089ff',
   secondary: '#48c998',
