@@ -37,11 +37,11 @@ module.exports = override(
     ['crypto']: path.resolve(__dirname, './src/crypto'),
     ['hooks']: path.resolve(__dirname, './src/hooks'),
     ['lib']: path.resolve(__dirname, './src/lib'),
-    ['navigation']: path.resolve(__dirname, './src/navigation'),
-    ['services']: path.resolve(__dirname, './src/services'),
+    ['navigation']: path.resolve(__dirname, './web/navigation'),
+    ['services']: path.resolve(__dirname, './web/services'),
     ['store']: path.resolve(__dirname, './src/store'),
-    ['stores']: path.resolve(__dirname, './src/stores'),
-    ['theme']: path.resolve(__dirname, './src/theme'),
+    ['stores']: path.resolve(__dirname, './web/stores'),
+    ['theme']: path.resolve(__dirname, './web/theme2'),
     ['types']: path.resolve(__dirname, './src/types'),
   })
 )

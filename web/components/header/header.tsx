@@ -4,7 +4,7 @@ import { HeaderProps } from './header.props'
 import { Button } from '../button/button'
 import { Text } from '../text/text'
 import { Icon } from '../icon/icon'
-import { spacing } from '../../theme'
+import { spacing } from 'theme'
 
 // static styles
 const ROOT: ViewStyle = {

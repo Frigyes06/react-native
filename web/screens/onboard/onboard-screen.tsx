@@ -13,7 +13,7 @@ export default {}
 //   AutoImage as Image,
 // } from '../../components'
 // import { NavigatorParamList } from '../../navigators'
-// import { color, spacing } from '../../theme'
+// import { color, spacing } from 'theme'
 // import { useStores } from '../../models'
 // import { palette } from '../../theme/palette'
 // import { sleep } from '../../utils/sleep'
