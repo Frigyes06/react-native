@@ -86,7 +86,7 @@ export default function Intro({ tribe }) {
   }
 
   function onTribeMembersPress() {
-    navigation.navigate('TribeMembers', { tribe })
+    navigation.navigate('TribeMembers' as never, { tribe } as never)
   }
 
   return useObserver(() => {
@@ -230,7 +230,7 @@ function TribeActions({ tribe }) {
   async function onChatPress() {
     msg.seeChat(tribe.chat.id)
     msg.getMessages()
-    navigation.navigate('Chat', { ...tribe.chat })
+    navigation.navigate('Chat' as never, { ...tribe.chat } as never)
   }
 
   return useObserver(() => {

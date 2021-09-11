@@ -63,11 +63,14 @@ export default function Header({
 
     function onChatInfoPress() {
       if (chat.type === conversation) {
-        if (contact) navigation.navigate('Contact', { contact: { ...contact } })
+        if (contact) navigation.navigate('Contact' as never, { contact: { ...contact } } as never)
       } else {
-        navigation.navigate('ChatDetails', {
-          group: { ...theChat, ...tribeParams, pricePerMinute },
-        })
+        navigation.navigate(
+          'ChatDetails' as never,
+          {
+            group: { ...theChat, ...tribeParams, pricePerMinute } as never,
+          } as never
+        )
       }
     }
 
@@ -83,7 +86,7 @@ export default function Header({
         // ui.setEditContactModal(contact)
       } else {
         const tribe = tribes.find((t) => t.chat?.uuid === chat?.uuid)
-        navigation.navigate('Tribe', { tribe: { ...tribe } })
+        navigation.navigate('Tribe' as never, { tribe: { ...tribe } } as never)
       }
     }
 
