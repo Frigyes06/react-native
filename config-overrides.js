@@ -6,6 +6,7 @@ const {
   removeModuleScopePlugin,
   addWebpackExternals,
   addWebpackAlias,
+  addBabelPlugin,
 } = require('customize-cra')
 const path = require('path')
 
@@ -13,11 +14,18 @@ module.exports = override(
   removeModuleScopePlugin(),
   addDecoratorsLegacy(),
   disableEsLint(),
-  babelInclude([path.resolve('src'), path.resolve('web')]),
+  babelInclude([
+    path.resolve('src'),
+    path.resolve('web'),
+    path.resolve('node_modules/@ovaeasy/react-native-vector-icons'),
+  ]),
+  addBabelPlugin('@babel/plugin-proposal-class-properties'),
   addWebpackExternals({
     realm: 'RealmStub',
   }),
   addWebpackAlias({
+    ['react-native$']: 'react-native-web',
+    ['react-native-vector-icons']: '@ovaeasy/react-native-vector-icons',
     ['animations']: path.resolve(__dirname, './src/animations'),
     ['api']: path.resolve(__dirname, './src/api'),
     ['assets']: path.resolve(__dirname, './src/assets'),
