@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { View, ViewStyle, TextStyle, ImageStyle } from 'react-native'
+import { View, ViewStyle, TextStyle, ImageStyle, StyleSheet } from 'react-native'
 import { StackScreenProps } from '@react-navigation/stack'
 import { observer } from 'mobx-react-lite'
 import { Screen, GradientBackground, AutoImage as Image } from '../../components2'
@@ -16,11 +16,20 @@ export const HomeScreen: FC<StackScreenProps<NavigatorParamList, 'home'>> = obse
   }, [])
 
   return (
-    <View style={{ position: 'absolute', backgroundColor: 'black', width: '100vw', height: '100vh' }}>
-      <View testID='OnboardScreen' style={FULL}>
-        <GradientBackground colors={[theme.orange, theme.orangeSecondary]} />
-        <Screen style={CONTAINER} preset='scroll' backgroundColor={color.transparent}>
-          <Image source={logo} style={LOGO} />
+    <View style={{ position: 'absolute', width: '100vw', height: '100vh' }}>
+      <GradientBackground colors={[theme.orange, theme.orangeSecondary]} />
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', height: '100%', width: '100%' }}>
+        <View
+          style={{
+            backgroundColor: theme.transparent,
+            paddingHorizontal: 30,
+            borderRadius: 30,
+            marginBottom: 45,
+          }}
+        >
+          <Image source={logo} style={{ width: 140, height: 100 }} resizeMode={'contain'} />
+        </View>
+        <View style={{ width: 500, justifyContent: 'center', alignItems: 'center' }}>
           <Button
             color={theme.orangeSecondary}
             w='70%'
@@ -53,59 +62,11 @@ export const HomeScreen: FC<StackScreenProps<NavigatorParamList, 'home'>> = obse
           >
             I have a backup code
           </Button>
-          {/* <Button
-            testID='next-screen-button'
-            style={CONTINUE}
-            textStyle={CONTINUE_TEXT}
-            text='Subscribe to the waitlist'
-            onPress={nextScreen}
-          />
-          <Button
-            testID='next-screen-button'
-            style={CONTINUE}
-            textStyle={CONTINUE_TEXT}
-            text='I have an invite code'
-            onPress={nextScreen}
-          />
-          <Button
-            testID='next-screen-button'
-            style={CONTINUE}
-            textStyle={CONTINUE_TEXT}
-            text='I have a backup code'
-            onPress={nextScreen}
-          /> */}
-        </Screen>
+        </View>
       </View>
     </View>
   )
 })
-
-const TEXT: TextStyle = {
-  color: color.palette.white,
-  fontFamily: typography.primary,
-}
-const BOLD: TextStyle = { fontWeight: 'bold' }
-
-const LOGO: ImageStyle = {
-  alignSelf: 'center',
-  marginVertical: spacing[5],
-  maxWidth: '100%',
-  width: 400,
-  height: 230,
-  resizeMode: 'contain',
-}
-
-const CONTINUE: ViewStyle = {
-  paddingVertical: spacing[4],
-  paddingHorizontal: spacing[4],
-  backgroundColor: color.palette.orange,
-}
-const CONTINUE_TEXT: TextStyle = {
-  ...TEXT,
-  ...BOLD,
-  fontSize: 13,
-  letterSpacing: 2,
-}
 
 const logo = require('./zion-dark-theme.png')
 
@@ -117,3 +78,34 @@ const CONTAINER: ViewStyle = {
   alignItems: 'center',
   height: '100%',
 }
+
+const styles = StyleSheet.create({
+  wrap: {
+    flex: 1,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+  gradient: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+    width: '100%',
+  },
+  content: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+    width: '100%',
+  },
+  imageWrapper: {
+    paddingHorizontal: 30,
+    borderRadius: 30,
+    marginBottom: 45,
+  },
+})

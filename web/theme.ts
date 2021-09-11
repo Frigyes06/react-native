@@ -3,6 +3,7 @@ const theme = {
   orange: '#f0665b',
   orangeSecondary: '#e45e53',
   lightGrey: '#f5f6f8',
+  transparent: 'rgba(0,0,0,0.5)',
   bg: '#1a242f',
   primary: '#6089ff',
   secondary: '#48c998',
