@@ -5,8 +5,9 @@ import { onSnapshot } from 'mobx-state-tree'
 import { ReactotronConfig, DEFAULT_REACTOTRON_CONFIG } from './reactotron-config'
 import { mst } from 'reactotron-mst'
 import { Platform } from 'react-native'
+import { isDev } from 'store/utils/isDev'
 
-const __DEV__ = require('electron-is-dev')
+const __DEV__ = isDev
 
 // Teach TypeScript about the bad things we want to do.
 declare global {
