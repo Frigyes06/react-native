@@ -104,6 +104,7 @@
     "expo-gl": "^10.2.0",
     "expo-gl-cpp": "^10.1.0",
     "expo-graphics": "^2.0.0",
+    "expo-linear-gradient": "^9.2.0",
     "expo-three": "^5.7.0",
     "firebase": "^7.14.2",
     "form-data": "^3.0.0",

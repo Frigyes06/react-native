@@ -23,7 +23,21 @@ export const HomeScreen: FC<StackScreenProps<NavigatorParamList, 'home'>> = obse
             testID='next-screen-button'
             style={CONTINUE}
             textStyle={CONTINUE_TEXT}
+            text='Subscribe to the waitlist'
+            onPress={nextScreen}
+          />
+          <Button
+            testID='next-screen-button'
+            style={CONTINUE}
+            textStyle={CONTINUE_TEXT}
             text='I have an invite code'
+            onPress={nextScreen}
+          />
+          <Button
+            testID='next-screen-button'
+            style={CONTINUE}
+            textStyle={CONTINUE_TEXT}
+            text='I have a backup code'
             onPress={nextScreen}
           />
         </Screen>

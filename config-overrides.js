@@ -18,6 +18,7 @@ module.exports = override(
     path.resolve('src'),
     path.resolve('web'),
     path.resolve('node_modules/@ovaeasy/react-native-vector-icons'),
+    path.resolve('node_modules/expo-linear-gradient'),
   ]),
   addBabelPlugin('@babel/plugin-proposal-class-properties'),
   addWebpackExternals({
@@ -25,6 +26,8 @@ module.exports = override(
   }),
   addWebpackAlias({
     ['react-native$']: 'react-native-web',
+    // https://github.com/expo/expo/issues/9999#issuecomment-787382615
+    ['react-native-web/src']: 'react-native-web/dist',
     ['react-native-vector-icons']: '@ovaeasy/react-native-vector-icons',
     ['animations']: path.resolve(__dirname, './src/animations'),
     ['api']: path.resolve(__dirname, './src/api'),

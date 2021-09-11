@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { ViewStyle } from 'react-native'
-// import { LinearGradient } from 'expo-linear-gradient'
+import { LinearGradient } from 'expo-linear-gradient'
 
 const BG_GRADIENT: ViewStyle = {
   position: 'absolute',
@@ -15,6 +15,6 @@ export interface GradientBackgroundProps {
 }
 
 export function GradientBackground(props: GradientBackgroundProps) {
-  return <></>
-  // return <LinearGradient colors={props.colors} style={BG_GRADIENT} />
+  // return <></>
+  return <LinearGradient colors={props.colors} style={BG_GRADIENT} />
 }
