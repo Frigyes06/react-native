@@ -94,6 +94,7 @@
     "dompurify": "^2.0.15",
     "electron-deeplink": "^1.0.6",
     "electron-default-menu": "^1.0.2",
+    "electron-is-dev": "^2.0.0",
     "electron-log": "^4.2.2",
     "electron-unhandled": "^3.0.2",
     "emoji-mart": "^3.0.0",
