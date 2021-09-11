@@ -17,7 +17,6 @@ module.exports = function (api) {
             config: './src/config',
             crypto: './src/crypto',
             hooks: './src/hooks',
-            realm: './src/realm',
             services: './src/services',
             store: './src/store',
             theme: './src/theme',

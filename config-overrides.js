@@ -38,7 +38,6 @@ module.exports = override(
     ['hooks']: path.resolve(__dirname, './src/hooks'),
     ['lib']: path.resolve(__dirname, './src/lib'),
     ['navigation']: path.resolve(__dirname, './src/navigation'),
-    ['realm']: path.resolve(__dirname, './src/realm'),
     ['services']: path.resolve(__dirname, './src/services'),
     ['store']: path.resolve(__dirname, './src/store'),
     ['stores']: path.resolve(__dirname, './src/stores'),
