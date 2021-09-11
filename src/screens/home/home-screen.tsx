@@ -14,18 +14,20 @@ export const HomeScreen: FC<StackScreenProps<NavigatorParamList, 'home'>> = obse
   }, [])
 
   return (
-    <View testID='OnboardScreen' style={FULL}>
-      <GradientBackground colors={['#1a242f', '#141d27']} />
-      <Screen style={CONTAINER} preset='scroll' backgroundColor={color.transparent}>
-        <Image source={bowserLogo} style={BOWSER} />
-        <Button
-          testID='next-screen-button'
-          style={CONTINUE}
-          textStyle={CONTINUE_TEXT}
-          text='I have an invite code'
-          onPress={nextScreen}
-        />
-      </Screen>
+    <View style={{ position: 'absolute', backgroundColor: 'black', width: '100vw', height: '100vh' }}>
+      <View testID='OnboardScreen' style={FULL}>
+        <GradientBackground colors={['#1a242f', '#141d27']} />
+        <Screen style={CONTAINER} preset='scroll' backgroundColor={color.transparent}>
+          <Image source={bowserLogo} style={BOWSER} />
+          <Button
+            testID='next-screen-button'
+            style={CONTINUE}
+            textStyle={CONTINUE_TEXT}
+            text='I have an invite code'
+            onPress={nextScreen}
+          />
+        </Screen>
+      </View>
     </View>
   )
 })

@@ -8,7 +8,7 @@ import React from 'react'
 // import { useColorScheme } from 'react-native'
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-// import { HomeScreen, OnboardScreen } from '../screens'
+import { HomeScreen } from '../screens' // , OnboardScreen
 import { navigationRef } from './navigation-utilities'
 
 const Nothin = () => <h1>wat</h1>
@@ -44,7 +44,7 @@ const AppStack = () => {
       }}
       initialRouteName='home'
     >
-      <Stack.Screen name='home' component={Nothin} />
+      <Stack.Screen name='home' component={HomeScreen} />
       <Stack.Screen name='onboard' component={Nothin} />
     </Stack.Navigator>
   )
