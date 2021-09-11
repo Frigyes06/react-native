@@ -18,7 +18,7 @@ export const HomeScreen: FC<StackScreenProps<NavigatorParamList, 'home'>> = obse
       <View testID='OnboardScreen' style={FULL}>
         <GradientBackground colors={['#1a242f', '#141d27']} />
         <Screen style={CONTAINER} preset='scroll' backgroundColor={color.transparent}>
-          <Image source={bowserLogo} style={BOWSER} />
+          <Image source={logo} style={LOGO} />
           <Button
             testID='next-screen-button'
             style={CONTINUE}
@@ -38,7 +38,7 @@ const TEXT: TextStyle = {
 }
 const BOLD: TextStyle = { fontWeight: 'bold' }
 
-const BOWSER: ImageStyle = {
+const LOGO: ImageStyle = {
   alignSelf: 'center',
   marginVertical: spacing[5],
   maxWidth: '100%',
@@ -59,7 +59,7 @@ const CONTINUE_TEXT: TextStyle = {
   letterSpacing: 2,
 }
 
-const bowserLogo = require('./zion-dark-theme.png')
+const logo = require('./zion-dark-theme.png')
 
 const FULL: ViewStyle = { flex: 1 }
 const CONTAINER: ViewStyle = {
