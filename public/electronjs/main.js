@@ -1,6 +1,6 @@
 const { app, BrowserWindow, Menu, shell, dialog, nativeImage } = require('electron')
 const { Deeplink } = require('electron-deeplink')
-const isDev = true // require('electron-is-dev')
+const isDev = require('electron-is-dev')
 const defaultMenu = require('electron-default-menu')
 const unhandled = require('electron-unhandled')
 const VERSION = require('./version')
