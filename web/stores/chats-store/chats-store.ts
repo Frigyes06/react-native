@@ -7,7 +7,7 @@ export const ChatsStoreModel = types
   .model('ChatsStore')
   .props({
     chats: types.optional(types.map(ChatModel), {}),
-    tribes: types.frozen(),
+    tribes: types.optional(types.frozen(), {}),
   })
   .extend(withEnvironment)
   .actions((self) => ({

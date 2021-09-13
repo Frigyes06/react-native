@@ -75,7 +75,9 @@ export function allTribes(tribes, chats, user) {
   const chatsuids = chats.map((c) => c.uuid)
   const ownedChats = chats.filter((c) => c.type === constants.chat_types.tribe && c.owner_pubkey === user.publicKey)
 
-  return tribes.map((tribe) => {
+  const tribesArray: any[] = Array.from(tribes)
+
+  return tribesArray.map((tribe) => {
     return {
       ...tribe,
       chat: chatsuids && chats.find((c) => c.uuid === tribe.uuid),
@@ -127,9 +129,10 @@ export function useOwnerMediaType(msgs, tribe, type, myId): Array<Msg> {
 
 // feed from joined tribes
 export function useFeed(tribes, myid) {
-  tribes = tribes.filter((t) => t.joined && !t.owner && t.owner_pubkey !== INVITER_KEY)
+  const tribesArray: any[] = Array.from(tribes.values())
+  const filteredTribesArray = tribesArray.filter((t) => t.joined && !t.owner && t.owner_pubkey !== INVITER_KEY)
 
-  let allTribes = tribes.map((t) => processFeed(t, 6, myid))
+  let allTribes = filteredTribesArray.map((t) => processFeed(t, 6, myid))
 
   let feed = []
 
