@@ -4,7 +4,9 @@ import * as actions from './msg-actions'
 
 export const MsgStoreModel = types
   .model('MsgStore')
-  .props({})
+  .props({
+    messages: types.frozen(),
+  })
   .extend(withEnvironment)
   .actions((self) => ({}))
 

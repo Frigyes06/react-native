@@ -4,7 +4,10 @@ import * as actions from './ui-actions'
 
 export const UiStoreModel = types
   .model('UiStore')
-  .props({})
+  .props({
+    extraTextContent: types.string,
+    replyUUID: types.string,
+  })
   .extend(withEnvironment)
   .actions((self) => ({}))
 
