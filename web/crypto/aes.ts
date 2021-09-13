@@ -4,7 +4,6 @@ export async function decrypt(data: string, password: string) {
   const obj = { data, password }
   if (!data || !password) return ''
   const ret = await ipc.send('decrypt', obj)
-  console.log('ret:', ret)
   return ret
 }
 

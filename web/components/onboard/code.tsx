@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
   StyleSheet,
   View,
@@ -36,7 +36,7 @@ type RouteParams = {
 export const Code = (props) => {
   const { onBack, onDone, z } = props
   const onRestore = () => {
-    alert('looks like ur signed up')
+    console.log('looks like ur signed up')
     // user.finishOnboard() // clear out things
     //     ui.setSignedUp(true) // signed up w key export
     //     ui.setPinCodeModal(true) // also PIN has been set
@@ -52,10 +52,6 @@ export const Code = (props) => {
   const [showPin, setShowPin] = useState(false)
   const [wrong, setWrong] = useState('')
   const [error, setError] = useState('')
-
-  useEffect(() => {
-    console.log('showPin:', showPin)
-  }, [showPin])
 
   async function scan(data) {
     setCode(data)
@@ -104,20 +100,16 @@ export const Code = (props) => {
 
   // sign up from invitation code (or restore)
   async function checkInvite(theCode) {
-    console.log(theCode)
     if (!theCode || checking) return
 
     const correct = detectCorrectString(theCode)
-    console.log(correct)
     if (!correct) return
 
     setChecking(true)
     try {
       // atob decodes the code
       const codeString = atob(theCode)
-      console.log(codeString)
       if (codeString.startsWith('keys::')) {
-        console.log('ok show pin')
         setShowPin(true)
 
         return
@@ -168,16 +160,16 @@ export const Code = (props) => {
   }
 
   async function pinEntered(pin) {
-    console.log('PIN ENTERED', pin)
+    // console.log('PIN ENTERED', pin)
     try {
       const restoreString = atob(code)
 
       if (restoreString.startsWith('keys::')) {
         const enc = restoreString.substr(6)
-        console.log('enc:', enc)
+        // console.log('enc:', enc)
         const dec = await aes.decrypt(enc, pin)
         // const dec = await e2e.decrypt(enc, pin)
-        console.log('dec:', dec)
+        // console.log('dec:', dec)
 
         if (dec) {
           await setPinCode(pin)

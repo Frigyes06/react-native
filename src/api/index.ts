@@ -40,8 +40,8 @@ export function instantiateRelay(
 
   if (authToken) {
     // only connect here (to avoid double) if auth token means for real
-    connectWebSocket(`${protocol}${ip}`, authToken, connectedCallback, disconnectCallback)
-    registerWsHandlers(wsHandlers)
+    // connectWebSocket(`${protocol}${ip}`, authToken, connectedCallback, disconnectCallback)
+    // registerWsHandlers(wsHandlers)
   }
 
   // registerHandler each msg type here?
