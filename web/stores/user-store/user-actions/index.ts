@@ -1,5 +1,6 @@
 export * from './finishInvite'
 export * from './generateToken'
 export * from './reportError'
+export * from './restore'
 export * from './signupWithCode'
 export * from './signupWithIP'

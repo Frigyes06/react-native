@@ -1,16 +1,16 @@
 import React from 'react'
-import { useObserver } from 'mobx-react-lite'
+import { observer } from 'mobx-react-lite'
 
 import ModalWrap from './ModalWrap'
 
-export default function PinCodeModal({ visible, close, children }) {
-  return useObserver(() => (
+export const PinCodeModal = observer(({ visible, close, children }: any) => {
+  console.log('PinCodeModal visible:', visible)
+  if (!visible) return <></>
+  return (
     <ModalWrap visible={visible} onClose={close} noHeader noSwipe>
       {children}
     </ModalWrap>
-  ))
-}
+  )
+})
 
-PinCodeModal.defaultProps = {
-  close: () => {},
-}
+export default PinCodeModal

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   StyleSheet,
   View,
@@ -45,6 +45,10 @@ export const Code = (props) => {
   const [showPin, setShowPin] = useState(false)
   const [wrong, setWrong] = useState('')
   const [error, setError] = useState('')
+
+  useEffect(() => {
+    console.log('showPin:', showPin)
+  }, [showPin])
 
   async function scan(data) {
     setCode(data)
@@ -93,16 +97,20 @@ export const Code = (props) => {
 
   // sign up from invitation code (or restore)
   async function checkInvite(theCode) {
+    console.log(theCode)
     if (!theCode || checking) return
 
     const correct = detectCorrectString(theCode)
+    console.log(correct)
     if (!correct) return
 
     setChecking(true)
     try {
       // atob decodes the code
       const codeString = atob(theCode)
+      console.log(codeString)
       if (codeString.startsWith('keys::')) {
+        console.log('ok show pin')
         setShowPin(true)
 
         return
@@ -124,6 +132,7 @@ export const Code = (props) => {
       return
     }
 
+    console.tron.log('are we here')
     let theIP = user.currentIP
     let thePassword = ''
     if (!theIP) {
@@ -151,34 +160,37 @@ export const Code = (props) => {
     setChecking(false)
   }
 
-  // async function pinEntered(pin) {
-  //   try {
-  //     const restoreString = atob(code)
+  async function pinEntered(pin) {
+    console.log('PIN ENTERED', pin)
+    try {
+      const restoreString = atob(code)
 
-  //     if (restoreString.startsWith('keys::')) {
-  //       const enc = restoreString.substr(6)
-  //       const dec = await e2e.decrypt(enc, pin)
+      if (restoreString.startsWith('keys::')) {
+        const enc = restoreString.substr(6)
+        console.log('enc:', enc)
+        const dec = await e2e.decrypt(enc, pin)
+        console.log('dec:', dec)
 
-  //       if (dec) {
-  //         await setPinCode(pin)
-  //         const priv = await user.restore(dec)
+        if (dec) {
+          await setPinCode(pin)
+          const priv = await user.restore(dec)
 
-  //         if (priv) {
-  //           await rsa.setPrivateKey(priv)
-  //           return onRestore()
-  //         }
-  //       } else {
-  //         // wrong PIN
-  //         setShowPin(false)
-  //         setError('You entered a wrong pin')
+          if (priv) {
+            await rsa.setPrivateKey(priv)
+            return onRestore()
+          }
+        } else {
+          // wrong PIN
+          setShowPin(false)
+          setError('You entered a wrong pin')
 
-  //         setChecking(false)
-  //       }
-  //     }
-  //   } catch (error) {
-  //     setError('You entered a wrong pin')
-  //   }
-  // }
+          setChecking(false)
+        }
+      }
+    } catch (error) {
+      setError('You entered a wrong pin')
+    }
+  }
 
   return (
     <View style={{ ...styles.wrap, zIndex: z }} accessibilityLabel='onboard-code'>
@@ -287,7 +299,7 @@ export const Code = (props) => {
           showPaster={false}
         />
       )}
-      {/* <PinCodeModal visible={showPin}>
+      <PinCodeModal visible={showPin}>
         <PIN
           forceEnterMode
           onFinish={async (pin) => {
@@ -295,7 +307,7 @@ export const Code = (props) => {
             pinEntered(pin)
           }}
         />
-      </PinCodeModal> */}
+      </PinCodeModal>
     </View>
   )
 }
