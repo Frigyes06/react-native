@@ -11,6 +11,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { HomeScreen } from '../screens' // , OnboardScreen
 import { navigationRef } from './navigation-utilities'
 import { AuthNavigator } from './auth-navigator'
+import { observer } from 'mobx-react-lite'
+import { useStores } from 'stores'
 
 const Nothin = () => <h1>wat</h1>
 
@@ -37,7 +39,9 @@ export type NavigatorParamList = {
 // Documentation: https://reactnavigation.org/docs/stack-navigator/
 const Stack = createNativeStackNavigator<NavigatorParamList>()
 
-const AppStack = () => {
+const AppStack = observer(() => {
+  const { user } = useStores()
+  console.log('user.loggedIn:', user.loggedIn())
   return (
     <Stack.Navigator
       screenOptions={{
@@ -50,7 +54,7 @@ const AppStack = () => {
       <Stack.Screen name='onboard' component={Nothin} />
     </Stack.Navigator>
   )
-}
+})
 
 interface NavigationProps extends Partial<React.ComponentProps<typeof NavigationContainer>> {}
 

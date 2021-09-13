@@ -7,14 +7,14 @@ export const UserStoreModel = types
   .model('UserStore')
   .props({
     alias: types.optional(types.string, ''),
-    authToken: types.optional(types.string, 'EOqzXhndpa9XyMcCUAPK'),
-    // authToken: types.optional(types.string, ''),
+    // authToken: types.optional(types.string, 'EOqzXhndpa9XyMcCUAPK'),
+    authToken: types.optional(types.string, ''),
     code: types.optional(types.string, ''),
-    currentIP: types.optional(types.string, 'http://box-5.arcade.city:3001'),
+    // currentIP: types.optional(types.string, 'http://box-5.arcade.city:3001'),
+    currentIP: types.optional(types.string, ''),
     invite: types.optional(UserInviteModel, {}),
-    // currentIP: types.optional(types.string, ''),
-    myid: types.optional(types.number, 1),
-    // myid: types.maybeNull(types.number),
+    // myid: types.optional(types.number, 1),
+    myid: types.maybeNull(types.number),
     publicKey: types.optional(types.string, ''),
   })
   .extend(withEnvironment)
@@ -40,6 +40,11 @@ export const UserStoreModel = types
     },
     setMyID: (id: number) => {
       self.myid = id
+    },
+  }))
+  .views((self) => ({
+    loggedIn(): boolean {
+      return self.currentIP && self.authToken ? true : false
     },
   }))
 
