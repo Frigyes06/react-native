@@ -34,7 +34,13 @@ type RouteParams = {
 }
 
 export const Code = (props) => {
-  const { onBack, onDone, z, onRestore } = props
+  const { onBack, onDone, z } = props
+  const onRestore = () => {
+    alert('looks like ur signed up')
+    // user.finishOnboard() // clear out things
+    //     ui.setSignedUp(true) // signed up w key export
+    //     ui.setPinCodeModal(true) // also PIN has been set
+  }
   const { user } = useStores()
   const theme = useTheme()
   const navigation = useNavigation()
