@@ -9,7 +9,7 @@ const __DEV__ = isDev
 /**
  * The key we'll be saving our state as within async storage.
  */
-const ROOT_STATE_STORAGE_KEY = 'root7'
+const ROOT_STATE_STORAGE_KEY = 'root9'
 
 /**
  * Setup the environment that all the models will be sharing.
@@ -35,7 +35,8 @@ export async function setupRootStore() {
   const env = await createEnvironment()
   try {
     // load data from storage
-    data = (await storage.getItem(ROOT_STATE_STORAGE_KEY)) || {}
+    data = JSON.parse(await storage.getItem(ROOT_STATE_STORAGE_KEY)) || {}
+    // console.log('DATA?', JSON.parse(data))
     rootStore = RootStoreModel.create(data, env)
   } catch (e) {
     // if there's any problems loading, then let's at least fallback to an empty state

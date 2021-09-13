@@ -86,6 +86,8 @@ export class Reactotron {
    */
   setRootStore(rootStore: any, initialData: any) {
     if (__DEV__) {
+      console.log(rootStore)
+      console.log(initialData)
       rootStore = rootStore as RootStore // typescript hack
       this.rootStore = rootStore
 
