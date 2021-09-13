@@ -31,9 +31,8 @@ type RouteParams = {
   }
 }
 
-export default function Code(props) {
+export const Code = (props) => {
   const { onBack, onDone, z, onRestore } = props
-  console.log('onBack:', onBack)
   const { user } = useStores()
   const theme = useTheme()
   const navigation = useNavigation()
@@ -43,6 +42,7 @@ export default function Code(props) {
   const [code, setCode] = useState('')
   const [checking, setChecking] = useState(false)
   const [showPin, setShowPin] = useState(false)
+  console.log('showPin:', showPin)
   const [wrong, setWrong] = useState('')
   const [error, setError] = useState('')
 
@@ -188,7 +188,7 @@ export default function Code(props) {
         color={theme.grey}
         size={26}
         style={styles.backArrow}
-        onPress={onBack}
+        onPress={() => navigation.goBack()}
         accessibilityLabel='onboard-profile-back'
       />
 
@@ -287,7 +287,7 @@ export default function Code(props) {
           showPaster={false}
         />
       )}
-      <PinCodeModal visible={showPin}>
+      {/* <PinCodeModal visible={showPin}>
         <PIN
           forceEnterMode
           onFinish={async (pin) => {
@@ -295,7 +295,7 @@ export default function Code(props) {
             pinEntered(pin)
           }}
         />
-      </PinCodeModal>
+      </PinCodeModal> */}
     </View>
   )
 }
