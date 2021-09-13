@@ -9,7 +9,7 @@ const __DEV__ = isDev
 /**
  * The key we'll be saving our state as within async storage.
  */
-const ROOT_STATE_STORAGE_KEY = 'root10'
+const ROOT_STATE_STORAGE_KEY = 'root11'
 
 /**
  * Setup the environment that all the models will be sharing.

@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, TouchableOpacity, ViewStyle } from 'react-native'
 import { IconButton } from 'react-native-paper'
 import { isIphoneX, getBottomSpace } from 'react-native-iphone-x-helper'
 
@@ -84,7 +84,7 @@ NumKey.defaultProps = {
   dark: false,
 }
 
-const styles = StyleSheet.create({
+const styles = {
   wrap: {
     // flex: 1,
     // justifyContent: 'flex-end',
@@ -96,20 +96,20 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     height: '25%',
-  },
+  } as ViewStyle,
   key: {
     width: '33.33%',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  } as ViewStyle,
   empty: {
     width: '33.33%',
-  },
+  } as ViewStyle,
   backWrap: {
     width: '33.33%',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-})
+  } as ViewStyle,
+}

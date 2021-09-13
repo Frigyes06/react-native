@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, Dimensions } from 'react-native'
+import { StyleSheet, View, Dimensions, ViewStyle } from 'react-native'
 import Modal from 'react-native-modal'
 import { isIphoneX, getStatusBarHeight } from 'react-native-iphone-x-helper'
 
@@ -50,7 +50,7 @@ export default function ModalWrap(props) {
       <View
         style={{
           ...styles.main,
-          backgroundColor: theme.bg,
+          backgroundColor: 'green', //  theme.bg,
           height: fullscreen ? '100%' : 200,
           paddingTop,
         }}
@@ -73,13 +73,13 @@ ModalWrap.defaultProps = {
   noHeader: false,
 }
 
-const styles = StyleSheet.create({
+const styles = {
   modal: {
     margin: 0,
     flex: 1,
-  },
+  } as ViewStyle,
   main: {
     borderTopLeftRadius: isIphoneX() ? 20 : 0,
     borderTopRightRadius: isIphoneX() ? 20 : 0,
-  },
-})
+  } as ViewStyle,
+}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, ViewStyle } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { ActivityIndicator, Colors } from 'react-native-paper'
 import EncryptedStorage from 'react-native-encrypted-storage'
@@ -219,24 +219,24 @@ function ts() {
   return moment().unix() + ''
 }
 
-const styles = StyleSheet.create({
+const styles = {
   wrap: {
     flex: 1,
     width: '100%',
-  },
+  } as ViewStyle,
   top: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 40,
     marginBottom: 40,
-  },
+  } as ViewStyle,
   lock: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 60,
-  },
+  } as ViewStyle,
   circles: {
     width: '100%',
     display: 'flex',
@@ -244,9 +244,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 60,
-  },
+  } as ViewStyle,
   spinWrap: {
     height: 20,
-  },
-})
+  } as ViewStyle,
+}
 //
