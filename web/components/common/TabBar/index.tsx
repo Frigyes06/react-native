@@ -33,18 +33,21 @@ export default function TabBar() {
     // },
     {
       name: 'Chats',
-      icon: (color) => <IonIcon name='chatbubbles-outline' color={color} size={24} />,
+      icon: 'question-answer',
+      // icon: (color) => <IonIcon name='chatbubbles-outline' color={color} size={24} />,
       key: 'chats',
     },
     {
       name: 'Tribes',
+      // icon: 'question-answer',
       icon: (color) => <FontAwesome5Icon name='users' color={color} size={20} />,
+      // icon: 'moon',
       key: 'tribes',
     },
     {
       name: 'Payment',
       // icon: 'wallet',
-      icon: (color) => <SimpleIcon name='wallet' color={color} size={20} />,
+      icon: 'account', //(color) => <SimpleIcon name='wallet' color={color} size={20} />,
       key: 'payment',
     },
     {

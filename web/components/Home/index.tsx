@@ -44,7 +44,7 @@ const Home = observer(() => {
     <View
       style={{
         ...styles.wrap,
-        backgroundColor: 'green', // theme.bg,
+        backgroundColor: theme.bg,
         width: '100vw',
         height: '100vh',
         position: 'absolute',
@@ -65,7 +65,6 @@ const Home = observer(() => {
             keyboardDismissMode='on-drag'
             style={{
               height: SCREEN_HEIGHT - STATUS_BAR_HEIGHT - 44,
-              backgroundColor: 'green',
             }}
             refreshControl={<RefreshLoading refreshing={refreshing} onRefresh={onRefresh} />}
             showsVerticalScrollIndicator={false}
