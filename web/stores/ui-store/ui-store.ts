@@ -5,10 +5,10 @@ import * as actions from './ui-actions'
 export const UiStoreModel = types
   .model('UiStore')
   .props({
-    extraTextContent: types.string,
-    replyUUID: types.string,
-    searchTerm: types.string,
-    tribesSearchTerm: types.string,
+    extraTextContent: types.optional(types.string, ''),
+    replyUUID: types.optional(types.string, ''),
+    searchTerm: types.optional(types.string, ''),
+    tribesSearchTerm: types.optional(types.string, ''),
   })
   .extend(withEnvironment)
   .actions((self) => ({}))

@@ -5,7 +5,7 @@ import * as actions from './msg-actions'
 export const MsgStoreModel = types
   .model('MsgStore')
   .props({
-    lastSeen: types.number,
+    lastSeen: types.optional(types.number, 0),
     messages: types.frozen(),
   })
   .extend(withEnvironment)
