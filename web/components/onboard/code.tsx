@@ -151,34 +151,34 @@ export const Code = (props) => {
     setChecking(false)
   }
 
-  async function pinEntered(pin) {
-    try {
-      const restoreString = atob(code)
+  // async function pinEntered(pin) {
+  //   try {
+  //     const restoreString = atob(code)
 
-      if (restoreString.startsWith('keys::')) {
-        const enc = restoreString.substr(6)
-        const dec = await e2e.decrypt(enc, pin)
+  //     if (restoreString.startsWith('keys::')) {
+  //       const enc = restoreString.substr(6)
+  //       const dec = await e2e.decrypt(enc, pin)
 
-        if (dec) {
-          await setPinCode(pin)
-          const priv = await user.restore(dec)
+  //       if (dec) {
+  //         await setPinCode(pin)
+  //         const priv = await user.restore(dec)
 
-          if (priv) {
-            await rsa.setPrivateKey(priv)
-            return onRestore()
-          }
-        } else {
-          // wrong PIN
-          setShowPin(false)
-          setError('You entered a wrong pin')
+  //         if (priv) {
+  //           await rsa.setPrivateKey(priv)
+  //           return onRestore()
+  //         }
+  //       } else {
+  //         // wrong PIN
+  //         setShowPin(false)
+  //         setError('You entered a wrong pin')
 
-          setChecking(false)
-        }
-      }
-    } catch (error) {
-      setError('You entered a wrong pin')
-    }
-  }
+  //         setChecking(false)
+  //       }
+  //     }
+  //   } catch (error) {
+  //     setError('You entered a wrong pin')
+  //   }
+  // }
 
   return (
     <View style={{ ...styles.wrap, zIndex: z }} accessibilityLabel='onboard-code'>
