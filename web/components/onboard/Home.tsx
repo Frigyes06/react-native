@@ -1,13 +1,12 @@
 import React from 'react'
 import { Image, StyleSheet, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-
 import { useTheme } from 'store'
 import Typography from '../common/Typography'
 import Button from '../common/Button'
 import { GradientBackground } from 'components/common'
 
-export default function Home() {
+export const Home = () => {
   const theme = useTheme()
   const navigation = useNavigation()
 
@@ -49,7 +48,8 @@ export default function Home() {
             color={theme.lightGrey}
             w='70%'
             style={{ marginTop: 15 }}
-            onPress={() => navigation.navigate('Onboard' as never, { codeType: 'invite' } as never)}
+            onPress={() => navigation.navigate('Code' as never)}
+            // onPress={() => navigation.navigate('Onboard' as never, { codeType: 'invite' } as never)}
           >
             I have an invite code
           </Button>
@@ -58,7 +58,8 @@ export default function Home() {
             color={theme.lightGrey}
             w='70%'
             style={{ marginTop: 15 }}
-            onPress={() => navigation.navigate('Onboard' as never, { codeType: 'backup' } as never)}
+            onPress={() => navigation.navigate('Code' as never)}
+            // onPress={() => navigation.navigate('Onboard' as never, { codeType: 'backup' } as never)}
           >
             I have a backup code
           </Button>
