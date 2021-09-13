@@ -182,7 +182,7 @@ export const Code = (props) => {
 
   return (
     <View style={{ ...styles.wrap, zIndex: z }} accessibilityLabel='onboard-code'>
-      <GradientBackground colors={[theme.orange, theme.orangeSecondary]} />
+      <GradientBackground colors={[theme.gradient, theme.gradient2]} />
       <IconButton
         icon='arrow-left'
         color={theme.grey}
