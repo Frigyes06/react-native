@@ -18,7 +18,7 @@ import Avatar from '../common/Avatar'
 import Divider from '../common/Layout/Divider'
 import Boost from '../common/Button/Boost'
 import BoostDetails from './BoostDetails'
-import { useCachedEncryptedFile } from 'web/chat/msg/hooks'
+import { useCachedEncryptedFile } from '../../chat/msg/hooks'
 
 function Media(props) {
   const {
