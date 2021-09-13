@@ -222,7 +222,8 @@ function ts() {
 const styles = {
   wrap: {
     flex: 1,
-    width: '100%',
+    width: '100vw',
+    height: '100vh',
   } as ViewStyle,
   top: {
     flex: 1,

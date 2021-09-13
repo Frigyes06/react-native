@@ -23,7 +23,8 @@ export default function ModalWrap(props) {
   } = props
   const theme = useTheme()
 
-  const paddingTop = noHeader ? 0 : fullscreen ? getStatusBarHeight() : 0
+  // const paddingTop = noHeader ? 0 : fullscreen ? getStatusBarHeight() : 0
+  const paddingTop = 0
 
   return (
     <Modal
@@ -50,8 +51,8 @@ export default function ModalWrap(props) {
       <View
         style={{
           ...styles.main,
-          backgroundColor: 'green', //  theme.bg,
-          height: fullscreen ? '100%' : 200,
+          backgroundColor: theme.bg,
+          // height: fullscreen ? '100%' : 200,
           paddingTop,
         }}
       >
@@ -76,6 +77,7 @@ ModalWrap.defaultProps = {
 const styles = {
   modal: {
     margin: 0,
+    marginTop: -40,
     flex: 1,
   } as ViewStyle,
   main: {
