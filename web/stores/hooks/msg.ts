@@ -3,9 +3,10 @@ import * as base64 from 'base-64'
 
 import { useStores } from '../index'
 import { constants, constantCodes } from '../../constants'
-import { Msg, BoostMsg } from '../msg'
+import { Msg, BoostMsg } from '../msg-store'
 import { Contact } from '../contacts-store'
 import { parseLDAT, urlBase64FromAscii } from 'store/utils/ldat'
+import { Chat } from 'stores/chats-store'
 
 const group = constants.chat_types.group
 const tribe = constants.chat_types.tribe
@@ -20,14 +21,16 @@ export function useMsgs(chat, limit?: number) {
   const isTribe = chat.type === tribe
   if (!theID) {
     // for very beginning, where chat doesnt have id
-    const theChat = chats.chats.find((ch) => ch.type === 0 && arraysEqual(ch.contact_ids, chat.contact_ids)) // this is the problem
+    const theseChats: Chat[] = Array.from(chats.chats.values())
+    const theChat = theseChats.find((ch) => ch.type === 0 && arraysEqual(ch.contact_ids, chat.contact_ids)) // this is the problem
     if (theChat) theID = theChat.id // new chat pops in, from first message confirmation!
   }
   const msgs = msg.messages[theID]
 
   const shownMsgs = msgs && msgs.slice(0, limit || 1000)
 
-  const messages = processMsgs(shownMsgs, isTribe, contacts.contacts, myid)
+  const theseContacts: Contact[] = Array.from(contacts.contacts.values())
+  const messages = processMsgs(shownMsgs, isTribe, theseContacts, myid)
 
   const msgsWithDates = msgs && injectDates(messages)
   const ms = msgsWithDates || []

@@ -1,6 +1,8 @@
 import { Instance, SnapshotOut, types } from 'mobx-state-tree'
 import { ChatsStoreModel } from '../chats-store/chats-store'
 import { ContactsStoreModel } from '../contacts-store/contacts-store'
+import { MsgStoreModel } from '../msg-store/msg-store'
+import { UiStoreModel } from '../ui-store/ui-store'
 import { UserStoreModel } from '../user-store/user-store'
 
 /**
@@ -10,6 +12,8 @@ import { UserStoreModel } from '../user-store/user-store'
 export const RootStoreModel = types.model("RootStore").props({
   chats: types.optional(ChatsStoreModel, {} as any),
   contacts: types.optional(ContactsStoreModel, {} as any),
+  msg: types.optional(MsgStoreModel, {} as any),
+  ui: types.optional(UiStoreModel, {} as any),
   user: types.optional(UserStoreModel, {} as any)
 })
 

@@ -1,4 +1,5 @@
 import { useStores } from 'stores'
+import { Contact } from 'stores/contacts-store'
 import { useAvatarColor } from './msg'
 
 interface CalcBotPriceResponse {
@@ -60,7 +61,8 @@ export function useReplyContent(msgs, replyUUID, extraTextContent): replyContent
     replyMessageContent = replyMsg && replyMsg.message_content ? replyMsg.message_content : replyMsg?.media_type
 
     if (!replyMessageSenderAlias && replyMsg && replyMsg.sender) {
-      const sender = contacts.contacts.find((c) => c.id === replyMsg.sender)
+      const theseContacts: Contact[] = Array.from(contacts.contacts.values())
+      const sender = theseContacts.find((c) => c.id === replyMsg.sender)
       if (sender) replyMessageSenderAlias = sender.alias
     }
     replyColor = useAvatarColor(replyMessageSenderAlias)

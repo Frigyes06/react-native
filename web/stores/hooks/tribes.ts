@@ -6,7 +6,7 @@ import { INVITER_KEY } from 'config'
 import { constants } from '../../constants'
 import { calendarDate } from 'store/utils/date'
 import { useMsgs } from './msg'
-import { Msg } from '../msg'
+import { Msg } from '../msg-store'
 
 export function useTribes() {
   const { chats, user } = useStores()
