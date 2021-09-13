@@ -8,7 +8,7 @@ import InviteRow from './inviteRow'
 import { Chat } from '../../src/store/chats'
 import { Contact } from '../../src/store/contacts'
 import { constants } from '../../src/constants'
-import { useStores, hooks } from '../../src/store'
+import { useStores, hooks } from 'stores'
 const { useChats } = hooks
 
 function ChatList() {
