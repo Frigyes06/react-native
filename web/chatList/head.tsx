@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { useStores } from '../../src/store'
+import { useStores } from 'stores'
 import { useObserver } from 'mobx-react-lite'
 import SearchIcon from '@material-ui/icons/Search'
 import theme from '../theme'
@@ -12,8 +12,8 @@ import ArrowBackIosButton from '@material-ui/icons/ArrowBackIos'
 import ArrowForwardIosButton from '@material-ui/icons/ArrowForwardIos'
 import PersonAddIcon from '@material-ui/icons/PersonAdd'
 import EE, { RESET_IP, RESET_IP_FINISHED } from '../utils/ee'
-import { urlBase64FromAscii } from '../../src/store/utils/ldat'
-import Button from '../utils/button'
+// import { urlBase64FromAscii } from '../../src/store/utils/ldat'
+// import Button from '../utils/button'
 import { whiteBitcoinIcon } from '../images'
 import * as rsa from '../crypto/rsa'
 
@@ -61,11 +61,7 @@ export default function Head({ setWidth, width }) {
     const conts = await contacts.getContacts()
     createPrivateKeyIfNotExists(contacts, user)
 
-    await Promise.all([
-      details.getBalance(),
-      msg.getMessages(forceMore ? true : false),
-      // chats.getChats(),
-    ])
+    await Promise.all([details.getBalance(), msg.getMessages(forceMore ? true : false), chats.getChats()])
     setRefreshing(false)
   }
 

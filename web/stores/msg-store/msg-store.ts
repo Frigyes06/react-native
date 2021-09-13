@@ -18,7 +18,6 @@ export const MsgStoreModel = types
     },
   }))
 
-type ArrayObject = { [k: string]: string }
 type MsgStoreType = Instance<typeof MsgStoreModel>
 export interface MsgStore extends MsgStoreType {}
 type MsgStoreSnapshotType = SnapshotOut<typeof MsgStoreModel>
