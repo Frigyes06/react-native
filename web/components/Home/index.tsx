@@ -39,6 +39,7 @@ const Home = observer(() => {
   const allTribes = useTribes()
   const feed = useFeed(allTribes, user.myid)
   console.log('feed:', feed)
+  console.log('allTribes:', allTribes)
   console.log('loading:', loading)
 
   return (
