@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, View, ScrollView } from 'react-native'
-import { useObserver } from 'mobx-react-lite'
+import { View, ScrollView } from 'react-native'
+import { observer } from 'mobx-react-lite'
 import { ActivityIndicator } from 'react-native-paper'
-
 import { useStores, useTheme, hooks } from 'store'
 import { useFeed } from 'store/hooks/tribes'
 import { SCREEN_HEIGHT, STATUS_BAR_HEIGHT } from '../../constants'
@@ -13,7 +12,7 @@ import Feed from '../Feed'
 
 const { useTribes } = hooks
 
-export default function Home() {
+const Home = observer(() => {
   const [refreshing, setRefreshing] = useState(false)
   const [loading, setLoading] = useState(true)
   const { ui, chats, user } = useStores()
@@ -36,40 +35,56 @@ export default function Home() {
     fetchTribes()
   }
 
-  return useObserver(() => {
-    const allTribes = useTribes()
-    const feed = useFeed(allTribes, user.myid)
+  const allTribes = useTribes()
+  const feed = useFeed(allTribes, user.myid)
+  console.log('feed:', feed)
+  console.log('loading:', loading)
 
-    return (
-      <View style={{ ...styles.wrap, backgroundColor: theme.bg }}>
-        <Header border={true} />
-        <View style={{ flex: 1 }}>
-          {loading ? (
-            <View style={{ marginTop: 20 }}>
-              <ActivityIndicator />
-            </View>
-          ) : (
-            <ScrollView
-              keyboardDismissMode='on-drag'
-              style={{
-                height: SCREEN_HEIGHT - STATUS_BAR_HEIGHT - 44,
-              }}
-              refreshControl={<RefreshLoading refreshing={refreshing} onRefresh={onRefresh} />}
-              showsVerticalScrollIndicator={false}
-            >
-              <Feed feed={feed} />
-            </ScrollView>
-          )}
-        </View>
-
-        <TabBar />
+  return (
+    <View
+      style={{
+        ...styles.wrap,
+        backgroundColor: 'green', // theme.bg,
+        width: '100vw',
+        height: '100vh',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+      }}
+    >
+      <Header border={true} />
+      <View style={{ flex: 1 }}>
+        {loading ? (
+          <View style={{ marginTop: 20 }}>
+            <ActivityIndicator />
+          </View>
+        ) : (
+          <ScrollView
+            keyboardDismissMode='on-drag'
+            style={{
+              height: SCREEN_HEIGHT - STATUS_BAR_HEIGHT - 44,
+              backgroundColor: 'green',
+            }}
+            refreshControl={<RefreshLoading refreshing={refreshing} onRefresh={onRefresh} />}
+            showsVerticalScrollIndicator={false}
+          >
+            <Feed feed={feed} />
+          </ScrollView>
+        )}
       </View>
-    )
-  })
-}
 
-const styles = StyleSheet.create({
+      <TabBar />
+    </View>
+  )
+})
+
+export default Home
+
+const styles = {
   wrap: {
     flex: 1,
+    height: '100vh',
   },
-})
+}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, Image, TouchableOpacity, ViewStyle, ImageStyle } from 'react-native'
 import { Appbar, ActivityIndicator } from 'react-native-paper'
 import { useNavigation } from '@react-navigation/native'
 import { useObserver } from 'mobx-react-lite'
@@ -56,35 +56,35 @@ export default function Header({ border = false }) {
   })
 }
 
-const styles = StyleSheet.create({
+const styles = {
   appBar: {
     elevation: 0,
     height: 60,
-  },
+  } as ViewStyle,
   flex: {
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'row',
-  },
+  } as ViewStyle,
   content: {
     justifyContent: 'space-between',
     width: '100%',
-  },
+  } as ViewStyle,
   left: {
     justifyContent: 'space-between',
     width: 50,
     marginLeft: 12,
-  },
+  } as ViewStyle,
   right: {
     justifyContent: 'flex-end',
     marginRight: 12,
-  },
+  } as ViewStyle,
   brand: {
     width: 70,
     height: 70,
     maxWidth: 70,
-  },
+  } as ImageStyle,
   status: {
     width: 20,
-  },
-})
+  } as ViewStyle,
+}

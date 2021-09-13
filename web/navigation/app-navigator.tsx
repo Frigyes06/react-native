@@ -8,7 +8,6 @@ import React from 'react'
 // import { useColorScheme } from 'react-native'
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { HomeScreen } from '../screens' // , OnboardScreen
 import { navigationRef } from './navigation-utilities'
 import { AuthNavigator } from './auth-navigator'
 import { MainNavigator } from './main-navigator'
