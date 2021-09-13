@@ -9,7 +9,10 @@ import { constants } from '../../constants'
 
 export function useChats() {
   const { chats, msg, contacts, user } = useStores()
-  const theChats = allChats(chats.chats, contacts.contacts, user.myid)
+  // https://github.com/mobxjs/mobx-state-tree/issues/783#issuecomment-384209309
+  const theseChats: Chat[] = Array.from(chats.chats.values())
+  const theseContacts: Contact[] = Array.from(contacts.contacts.values())
+  const theChats = allChats(theseChats, theseContacts, user.myid)
   const chatsToShow = theChats
   sortChats(chatsToShow, msg.messages)
 
