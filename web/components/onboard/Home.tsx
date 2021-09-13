@@ -48,8 +48,7 @@ export const Home = () => {
             color={theme.lightGrey}
             w='70%'
             style={{ marginTop: 15 }}
-            onPress={() => navigation.navigate('Code' as never)}
-            // onPress={() => navigation.navigate('Onboard' as never, { codeType: 'invite' } as never)}
+            onPress={() => navigation.navigate('Code' as never, { codeType: 'invite' } as never)}
           >
             I have an invite code
           </Button>
@@ -58,8 +57,7 @@ export const Home = () => {
             color={theme.lightGrey}
             w='70%'
             style={{ marginTop: 15 }}
-            onPress={() => navigation.navigate('Code' as never)}
-            // onPress={() => navigation.navigate('Onboard' as never, { codeType: 'backup' } as never)}
+            onPress={() => navigation.navigate('Code' as never, { codeType: 'backup' } as never)}
           >
             I have a backup code
           </Button>
