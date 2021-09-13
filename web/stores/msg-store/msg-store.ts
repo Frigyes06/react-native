@@ -9,7 +9,9 @@ export const MsgStoreModel = types
     messages: types.frozen(),
   })
   .extend(withEnvironment)
-  .actions((self) => ({}))
+  .actions((self) => ({
+    seeChat: async (id: number): Promise<any> => await actions.seeChat(self as MsgStore, id),
+  }))
   .views((self) => ({
     filterMessagesByContent(id, something): any {
       return []

@@ -39,10 +39,10 @@ function ChatList() {
                   selected={c.id === scid && c.name === scname}
                   onClick={async () => {
                     msg.seeChat(c.id)
-                    ui.setSelectedChat(c)
-                    ui.toggleBots(false)
-                    chats.checkRoute(c.id, user.myid)
-                    ui.setImgViewerParams(null)
+                    // ui.setSelectedChat(c)
+                    // ui.toggleBots(false)
+                    // chats.checkRoute(c.id, user.myid)
+                    // ui.setImgViewerParams(null)
                   }}
                 />
               )
