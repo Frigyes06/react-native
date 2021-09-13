@@ -18,6 +18,7 @@ export function connectWebSocket(
   connectedCallback?: Function,
   disconnectCallback?: Function
 ) {
+  console.log('connectWebSocket with ip and authToken:', ip, authToken)
   if (io) {
     return // dont reconnect if already exists
   }
@@ -56,5 +57,6 @@ export function connectWebSocket(
 
   io.on('error', function (e) {
     console.log('socketio error', e)
+    console.error(e)
   })
 }
