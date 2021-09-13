@@ -36,6 +36,7 @@ module.exports = override(
     // path.resolve('node_modules/react-native-camera'),
   ]),
   addBabelPlugin('@babel/plugin-proposal-class-properties'),
+  addBabelPlugin('inline-react-svg'),
   addWebpackExternals({
     realm: 'RealmStub',
   }),
