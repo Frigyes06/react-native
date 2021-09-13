@@ -4,8 +4,8 @@ import * as base64 from 'base-64'
 import { useStores } from '../index'
 import { constants, constantCodes } from '../../constants'
 import { Msg, BoostMsg } from '../msg'
-import { Contact } from '../contacts'
-import { parseLDAT, urlBase64FromAscii } from '../utils/ldat'
+import { Contact } from '../contacts-store'
+import { parseLDAT, urlBase64FromAscii } from 'store/utils/ldat'
 
 const group = constants.chat_types.group
 const tribe = constants.chat_types.tribe
