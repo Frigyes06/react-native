@@ -13,7 +13,8 @@ import { decode as atob } from 'base-64'
 // import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native'
 
-import { useStores, useTheme } from 'store'
+import { useTheme } from 'store'
+import { useStores } from 'stores'
 import { DEFAULT_HOST } from 'config'
 import * as e2e from 'crypto/e2e'
 import * as rsa from '../../crypto/rsa'
@@ -42,7 +43,6 @@ export const Code = (props) => {
   const [code, setCode] = useState('')
   const [checking, setChecking] = useState(false)
   const [showPin, setShowPin] = useState(false)
-  console.log('showPin:', showPin)
   const [wrong, setWrong] = useState('')
   const [error, setError] = useState('')
 

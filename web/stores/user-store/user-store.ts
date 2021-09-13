@@ -21,6 +21,8 @@ export const UserStoreModel = types
   .actions((self) => ({
     finishInvite: async (): Promise<boolean> => await actions.finishInvite(self as UserStore),
     generateToken: async (pwd: string): Promise<string> => await actions.generateToken(self as UserStore, pwd),
+    reportError: async (label: string, error: any): Promise<any> =>
+      await actions.reportError(self as UserStore, label, error),
     signupWithCode: async (code: string): Promise<ArrayObject> => await actions.signupWithCode(self as UserStore, code),
     signupWithIP: async (ip: string): Promise<string | null> => await actions.signupWithIP(self as UserStore, ip),
     setAuthToken: (authToken: string) => {
