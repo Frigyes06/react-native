@@ -13,7 +13,6 @@ export default function Welcome(props) {
   const { onDone, z, show } = props
   const { user } = useStores()
   const theme = useTheme()
-  console.log(user)
 
   async function go() {
     onDone()
