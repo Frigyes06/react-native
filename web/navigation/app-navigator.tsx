@@ -11,10 +11,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { HomeScreen } from '../screens' // , OnboardScreen
 import { navigationRef } from './navigation-utilities'
 import { AuthNavigator } from './auth-navigator'
+import { MainNavigator } from './main-navigator'
 import { observer } from 'mobx-react-lite'
 import { useStores } from 'stores'
-
-const Nothin = () => <h1>Logged In</h1>
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -48,7 +47,7 @@ const AppStack = observer(() => {
       initialRouteName='auth'
     >
       {!loggedIn && <Stack.Screen name='auth' component={AuthNavigator} />}
-      {loggedIn && <Stack.Screen name='main' component={Nothin} />}
+      {loggedIn && <Stack.Screen name='main' component={MainNavigator} />}
     </Stack.Navigator>
   )
 })
