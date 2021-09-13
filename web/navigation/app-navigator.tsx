@@ -14,7 +14,7 @@ import { AuthNavigator } from './auth-navigator'
 import { observer } from 'mobx-react-lite'
 import { useStores } from 'stores'
 
-const Nothin = () => <h1>wat</h1>
+const Nothin = () => <h1>Logged In</h1>
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -29,29 +29,26 @@ const Nothin = () => <h1>wat</h1>
  *   https://reactnavigation.org/docs/typescript#type-checking-the-navigator
  */
 export type NavigatorParamList = {
-  welcome: undefined
   home: undefined
-  demo: undefined
-  demoList: undefined
-  onboard: undefined
+  auth: undefined
+  main: undefined
 }
 
-// Documentation: https://reactnavigation.org/docs/stack-navigator/
 const Stack = createNativeStackNavigator<NavigatorParamList>()
 
 const AppStack = observer(() => {
   const { user } = useStores()
-  console.log('user.loggedIn:', user.loggedIn())
+  const loggedIn = user.loggedIn()
+  // console.log('user.loggedIn:', user.loggedIn())
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName='home'
+      initialRouteName='auth'
     >
-      <Stack.Screen name='home' component={AuthNavigator} />
-      {/* <Stack.Screen name='home' component={HomeScreen} /> */}
-      <Stack.Screen name='onboard' component={Nothin} />
+      {!loggedIn && <Stack.Screen name='auth' component={AuthNavigator} />}
+      {loggedIn && <Stack.Screen name='main' component={Nothin} />}
     </Stack.Navigator>
   )
 })

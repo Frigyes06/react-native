@@ -36,7 +36,7 @@ type RouteParams = {
 export const Code = (props) => {
   const { onBack, onDone, z } = props
   const onRestore = () => {
-    console.log('looks like ur signed up')
+    console.log('Code onRestore - nothing to do here? maybe pinmodal')
     // user.finishOnboard() // clear out things
     //     ui.setSignedUp(true) // signed up w key export
     //     ui.setPinCodeModal(true) // also PIN has been set
