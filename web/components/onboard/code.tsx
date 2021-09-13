@@ -16,7 +16,8 @@ import { useNavigation, useRoute, RouteProp } from '@react-navigation/native'
 import { useTheme } from 'store'
 import { useStores } from 'stores'
 import { DEFAULT_HOST } from 'config'
-import * as e2e from 'crypto/e2e'
+// import * as e2e from 'crypto/e2e'
+import * as aes from '../../crypto/aes'
 import * as rsa from '../../crypto/rsa'
 import { isLN, parseLightningInvoice } from '../utils/ln'
 import PIN, { setPinCode } from '../utils/pin'
@@ -168,12 +169,13 @@ export const Code = (props) => {
       if (restoreString.startsWith('keys::')) {
         const enc = restoreString.substr(6)
         console.log('enc:', enc)
-        const dec = await e2e.decrypt(enc, pin)
+        const dec = await aes.decrypt(enc, pin)
+        // const dec = await e2e.decrypt(enc, pin)
         console.log('dec:', dec)
 
         if (dec) {
           await setPinCode(pin)
-          const priv = await user.restore(dec)
+          const priv = await user.restore(dec as string)
 
           if (priv) {
             await rsa.setPrivateKey(priv)
@@ -188,6 +190,8 @@ export const Code = (props) => {
         }
       }
     } catch (error) {
+      console.log(error)
+      console.log(error.message)
       setError('You entered a wrong pin')
     }
   }

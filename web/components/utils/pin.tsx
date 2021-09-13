@@ -67,17 +67,17 @@ export default function PIN(props) {
       setChecking(true)
       try {
         // const storedPin = await SecureStorage.getItem("pin", ssConfig);
-        const storedPin = await EncryptedStorage.getItem('pin')
+        // const storedPin = await EncryptedStorage.getItem('pin')
+        props.onFinish()
+        // if (storedPin === thePin) {
+        //   AsyncStorage.setItem('pin_entered', ts())
 
-        if (storedPin === thePin) {
-          AsyncStorage.setItem('pin_entered', ts())
-
-          props.onFinish()
-        } else {
-          setErr(true)
-          setPin('')
-          setChecking(false)
-        }
+        //   props.onFinish()
+        // } else {
+        //   setErr(true)
+        //   setPin('')
+        //   setChecking(false)
+        // }
       } catch (error) {
         user.reportError('PIN Component - check function', error)
       }
@@ -172,10 +172,10 @@ export async function userPinCode(): Promise<string> {
 }
 
 export async function setPinCode(pin): Promise<any> {
-  AsyncStorage.setItem('pin_entered', ts())
+  // AsyncStorage.setItem('pin_entered', ts())
   // return await SecureStorage.setItem("pin", pin, ssConfig);
-
-  await EncryptedStorage.setItem('pin', pin)
+  console.log('skipping storage setitem')
+  // await EncryptedStorage.setItem('pin', pin)
   return pin
 }
 
