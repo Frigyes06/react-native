@@ -25,7 +25,7 @@ function ChatList() {
           <Head setWidth={setWidth} width={width} />
           <Chats>
             {theChats.map((c, i) => {
-              const contact = contactForConversation(c, contacts.contacts, user.myid)
+              const contact = contactForConversation(c, Array.from(contacts.contacts.values()), user.myid)
               let showInvite = false
               if (c.invite && c.invite.status !== 4) showInvite = true
               if (showInvite) {

@@ -1,4 +1,5 @@
 import { Instance, SnapshotOut, types } from 'mobx-state-tree'
+import { ChatModel } from 'stores/chats-store'
 import { withEnvironment } from '../extensions/with-environment'
 import * as actions from './ui-actions'
 
@@ -8,6 +9,8 @@ export const UiStoreModel = types
     extraTextContent: types.optional(types.string, ''),
     replyUUID: types.optional(types.string, ''),
     searchTerm: types.optional(types.string, ''),
+    selectedChat: types.maybe(types.reference(ChatModel)),
+    // selectedChat: types.optional(ChatModel, {}),
     tribesSearchTerm: types.optional(types.string, ''),
   })
   .extend(withEnvironment)
