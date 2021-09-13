@@ -7,6 +7,8 @@ export const UiStoreModel = types
   .props({
     extraTextContent: types.string,
     replyUUID: types.string,
+    searchTerm: types.string,
+    tribesSearchTerm: types.string,
   })
   .extend(withEnvironment)
   .actions((self) => ({}))

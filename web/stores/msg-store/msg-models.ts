@@ -1,6 +1,8 @@
 import { Instance, types } from 'mobx-state-tree'
 import { ChatModel } from 'stores/chats-store'
 
+export const BoostMsgModel = types.model('BoostMsg').props({})
+
 export const MsgModel = types.model('Msg').props({
   id: types.identifierNumber,
   chat_id: types.number, // will need to be reference
@@ -48,6 +50,7 @@ export const MsgModel = types.model('Msg').props({
 })
 
 export interface Msg extends Instance<typeof MsgModel> {}
+export interface BoostMsg extends Instance<typeof BoostMsgModel> {}
 
 /**
 

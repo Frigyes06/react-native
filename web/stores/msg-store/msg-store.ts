@@ -5,10 +5,16 @@ import * as actions from './msg-actions'
 export const MsgStoreModel = types
   .model('MsgStore')
   .props({
+    lastSeen: types.number,
     messages: types.frozen(),
   })
   .extend(withEnvironment)
   .actions((self) => ({}))
+  .views((self) => ({
+    filterMessagesByContent(id, something): any {
+      return []
+    },
+  }))
 
 type ArrayObject = { [k: string]: string }
 type MsgStoreType = Instance<typeof MsgStoreModel>
