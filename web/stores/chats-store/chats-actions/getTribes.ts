@@ -7,8 +7,8 @@ export const getTribes = async (self: ChatsStore) => {
     const r = await fetch(`https://${DEFAULT_TRIBE_SERVER}/tribes`)
     const j = await r.json()
 
-    console.log('TRIBES:', j)
-    // self.setTribes(j)
+    // console.log('TRIBES:', j)
+    self.setTribes(j)
 
     return true
   } catch (e) {

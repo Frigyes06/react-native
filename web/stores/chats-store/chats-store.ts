@@ -7,6 +7,7 @@ export const ChatsStoreModel = types
   .model('ChatsStore')
   .props({
     chats: types.optional(types.map(ChatModel), {}),
+    tribes: types.frozen(),
   })
   .extend(withEnvironment)
   .actions((self) => ({
@@ -40,6 +41,7 @@ export const ChatsStoreModel = types
     setChats: (chats: Chat[]) => {
       chats.forEach((chat) => (self as ChatsStore).setChat(chat))
     },
+    setTribes: (tribes: any) => (self.tribes = tribes),
   }))
 
 type ChatsStoreType = Instance<typeof ChatsStoreModel>
