@@ -19,6 +19,7 @@ export const ChatsStoreModel = types
     getChats: async (): Promise<boolean> => await actions.getChats(self as ChatsStore),
     getTribeDetails: async (host: string, uuid: string): Promise<any> =>
       await actions.getTribeDetails(self as ChatsStore, host, uuid),
+    getTribes: async (): Promise<boolean> => await actions.getTribes(self as ChatsStore),
     gotChat: async (chat: Chat): Promise<any> => await actions.gotChat(self as ChatsStore, chat),
     joinDefaultTribe: async (): Promise<boolean> => await actions.joinDefaultTribe(self as ChatsStore),
     joinTribe: async (params: actions.JoinTribeParams): Promise<boolean> =>

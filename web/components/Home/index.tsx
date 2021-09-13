@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { View, ScrollView } from 'react-native'
 import { observer } from 'mobx-react-lite'
 import { ActivityIndicator } from 'react-native-paper'
-import { useStores, useTheme, hooks } from 'store'
+import { useTheme, hooks } from 'store'
+import { useStores } from 'stores'
 import { useFeed } from 'store/hooks/tribes'
 import { SCREEN_HEIGHT, STATUS_BAR_HEIGHT } from '../../constants'
 import TabBar from '../common/TabBar'
@@ -15,7 +16,7 @@ const { useTribes } = hooks
 const Home = observer(() => {
   const [refreshing, setRefreshing] = useState(false)
   const [loading, setLoading] = useState(true)
-  const { ui, chats, user } = useStores()
+  const { chats, user } = useStores()
   const theme = useTheme()
 
   useEffect(() => {
