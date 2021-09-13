@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, Dimensions } from 'react-native'
+import { View, StyleSheet, Dimensions, ViewStyle } from 'react-native'
 import { useObserver } from 'mobx-react-lite'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -105,10 +105,10 @@ function renderIcon(route, current, theme) {
 
 // console.log(isIphoneX())
 
-const styles = StyleSheet.create({
+const styles = {
   wrap: {
     borderTopWidth: 1,
-  },
+  } as ViewStyle,
   tabBar: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     // })
     // height: 60 + getBottomSpace()
     // height: isIphoneXorAbove() ? 80 : 60
-  },
+  } as ViewStyle,
   iconWrap: {
     height: isIphoneX() ? 50 + getBottomSpace() : 60,
     // ...ifIphoneX({
@@ -130,15 +130,15 @@ const styles = StyleSheet.create({
     // height: isIphoneXorAbove() ? 80 : 60,
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  } as ViewStyle,
   tabIndicatorWrap: {
     alignItems: 'center',
     position: 'absolute',
     bottom: 10,
-  },
+  } as ViewStyle,
   tabIndicator: {
     height: 4,
     borderRadius: 2,
     width: '50%',
-  },
-})
+  } as ViewStyle,
+}
