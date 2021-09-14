@@ -4,7 +4,9 @@ import * as actions from './details-actions'
 
 export const DetailsStoreModel = types
   .model('DetailsStore')
-  .props({})
+  .props({
+    balance: types.optional(types.number, 0),
+  })
   .extend(withEnvironment)
   .actions((self) => ({}))
 
