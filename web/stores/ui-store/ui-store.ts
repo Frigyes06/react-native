@@ -18,6 +18,9 @@ export const UiStoreModel = types
   })
   .extend(withEnvironment)
   .actions((self) => ({
+    setConnected(connected: boolean) {
+      self.connected = connected
+    },
     setNewContact(contact: ArrayObject) {
       self.newContact = contact
     },
