@@ -152,6 +152,11 @@ export function contactForConversation(chat: Chat, contacts: Contact[], myid: nu
 }
 
 export function sortChats(chatsToShow, messages) {
+  console.tron.display({
+    name: 'sortChats',
+    preview: `before`,
+    value: { chatsToShow, messages },
+  })
   chatsToShow.sort((a, b) => {
     const amsgs = messages[a.id]
     const alastMsg = amsgs && amsgs[0]
