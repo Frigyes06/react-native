@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { Platform } from 'react-native'
 import { RootStore, RootStoreProvider, setupRootStore } from 'stores'
 import { Provider as PaperProvider } from 'react-native-paper'
 import { paperTheme } from '../src/theme'
-import { useTheme } from 'store'
+import { IconFonts } from 'components/icon-fonts'
 import { RootComponent } from 'components/root-component'
+import { useTheme } from 'store'
 
 const App = () => {
   const [rootStore, setRootStore] = useState<RootStore | undefined>(undefined)
@@ -29,22 +29,14 @@ const App = () => {
   if (!rootStore) return null //  || !isNavigationStateRestored
 
   // otherwise, we're ready to render the app
-  // paper icon shaz is from: https://callstack.github.io/react-native-paper/using-on-the-web.html
   return (
     <PaperProvider theme={pTheme}>
-      <React.Fragment>
-        {Platform.OS === 'web' ? (
-          <style type='text/css'>
-            {`@font-face {
-                font-family: 'MaterialCommunityIcons';
-                src: url(${require('react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf')}) format('truetype');
-              }`}
-          </style>
-        ) : null}
+      <>
+        <IconFonts />
         <RootStoreProvider value={rootStore}>
           <RootComponent />
         </RootStoreProvider>
-      </React.Fragment>
+      </>
     </PaperProvider>
   )
 }
