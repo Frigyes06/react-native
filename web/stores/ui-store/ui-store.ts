@@ -7,6 +7,7 @@ export const UiStoreModel = types
   .model('UiStore')
   .props({
     connected: types.optional(types.boolean, false),
+    onchain: types.optional(types.boolean, false),
     extraTextContent: types.optional(types.string, ''),
     replyUUID: types.optional(types.string, ''),
     searchTerm: types.optional(types.string, ''),
@@ -15,7 +16,14 @@ export const UiStoreModel = types
     tribesSearchTerm: types.optional(types.string, ''),
   })
   .extend(withEnvironment)
-  .actions((self) => ({}))
+  .actions((self) => ({
+    setOnchain(onchain: boolean) {
+      self.onchain = onchain
+    },
+    setSearchTerm(searchTerm: string) {
+      self.searchTerm = searchTerm
+    },
+  }))
 
 type ArrayObject = { [k: string]: string }
 type UiStoreType = Instance<typeof UiStoreModel>
