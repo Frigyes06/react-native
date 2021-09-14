@@ -6,6 +6,7 @@ import * as actions from './ui-actions'
 export const UiStoreModel = types
   .model('UiStore')
   .props({
+    connected: types.optional(types.boolean, false),
     extraTextContent: types.optional(types.string, ''),
     replyUUID: types.optional(types.string, ''),
     searchTerm: types.optional(types.string, ''),
