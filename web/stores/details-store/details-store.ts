@@ -8,7 +8,9 @@ export const DetailsStoreModel = types
     balance: types.optional(types.number, 0),
   })
   .extend(withEnvironment)
-  .actions((self) => ({}))
+  .actions((self) => ({
+    getBalance: async (): Promise<boolean> => await actions.getBalance(self as DetailsStore),
+  }))
 
 type DetailsStoreType = Instance<typeof DetailsStoreModel>
 export interface DetailsStore extends DetailsStoreType {}
