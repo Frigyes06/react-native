@@ -44,6 +44,10 @@ export function connectWebSocket(
   })
 
   io.on('disconnect', (socket) => {
+    console.tron.display({
+      name: 'connectWebSocket',
+      preview: 'SocketIO disconnected',
+    })
     if (disconnectCallback) disconnectCallback()
   })
 
@@ -56,6 +60,11 @@ export function connectWebSocket(
       if (handler) {
         handler(msg)
       }
+      console.tron.display({
+        name: 'connectWebSocket',
+        preview: 'SocketIO message',
+        value: { msg },
+      })
     } catch (e) {}
   })
 
