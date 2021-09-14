@@ -16,10 +16,28 @@ import EE, { RESET_IP, RESET_IP_FINISHED } from '../utils/ee'
 // import Button from '../utils/button'
 import { whiteBitcoinIcon } from '../images'
 import * as rsa from '../crypto/rsa'
+import { Contact } from 'stores/contacts-store'
 
 async function createPrivateKeyIfNotExists(contacts, user) {
   const priv = await rsa.getPrivateKey()
-  const me = contacts.contacts.find((c) => c.is_owner)
+
+  const theseContacts: Contact[] = Array.from(contacts.contacts.values())
+  const me = theseContacts.find((c) => c.is_owner)
+  console.tron.display({
+    name: 'createPKIfNotExists',
+    preview: `Got priv? ${!!priv}`,
+    value: { me, priv, theseContacts },
+  })
+
+  if (!me) {
+    console.tron.display({
+      name: 'createPKIfNotExists',
+      preview: `No 'me'`,
+      important: true,
+    })
+    return
+  }
+
   // private key has been made
   if (priv) {
     // set into user.contactKey

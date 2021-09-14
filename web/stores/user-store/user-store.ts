@@ -10,6 +10,7 @@ export const UserStoreModel = types
     // authToken: types.optional(types.string, 'EOqzXhndpa9XyMcCUAPK'),
     authToken: types.optional(types.string, ''),
     code: types.optional(types.string, ''),
+    contactKey: types.optional(types.string, ''),
     // currentIP: types.optional(types.string, 'http://box-5.arcade.city:3001'),
     currentIP: types.optional(types.string, ''),
     invite: types.optional(UserInviteModel, {}),
@@ -32,6 +33,9 @@ export const UserStoreModel = types
     },
     setAlias: (alias: string) => {
       self.alias = alias
+    },
+    setContactKey(ck: string) {
+      self.contactKey = ck
     },
     setCurrentIP: (ip: string) => {
       self.currentIP = ip
