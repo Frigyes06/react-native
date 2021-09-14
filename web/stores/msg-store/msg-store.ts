@@ -18,6 +18,9 @@ export const MsgStoreModel = types
     seeChat: async (id: number): Promise<any> => await actions.seeChat(self as MsgStore, id),
   }))
   .views((self) => ({
+    batchDecodeMessages(msgs: any): any {
+      return
+    },
     filterMessagesByContent(id, something): any {
       return []
     },
