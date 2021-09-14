@@ -13,14 +13,16 @@ export const MsgStoreModel = types
   })
   .extend(withEnvironment)
   .actions((self) => ({
+    batchDecodeMessages: async (msgs: any): Promise<boolean> =>
+      await actions.batchDecodeMessages(self as MsgStore, msgs),
     getMessages: async (forceMore: boolean): Promise<any> => await actions.getMessages(self as MsgStore, forceMore),
     restoreMessages: async (): Promise<any> => await actions.restoreMessages(self as MsgStore),
     seeChat: async (id: number): Promise<any> => await actions.seeChat(self as MsgStore, id),
+    setLastFetched(lastFetched: number) {
+      self.lastFetched = lastFetched
+    },
   }))
   .views((self) => ({
-    batchDecodeMessages(msgs: any): any {
-      return
-    },
     filterMessagesByContent(id, something): any {
       return []
     },

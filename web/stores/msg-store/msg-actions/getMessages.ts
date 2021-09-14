@@ -11,6 +11,10 @@ export const getMessages = async (self: MsgStore, forceMore: boolean) => {
   })
   const len = self.lengthOfAllMessages()
   if (len === 0) {
+    console.tron.display({
+      name: 'getMessages',
+      preview: `Returning self.restoreMessages()`,
+    })
     return self.restoreMessages()
   }
   let route = 'messages'
@@ -27,6 +31,11 @@ export const getMessages = async (self: MsgStore, forceMore: boolean) => {
   try {
     const r = await relay.get(route)
     if (!r) return
+    console.tron.display({
+      name: 'getMessages',
+      preview: `Returned with...`,
+      value: { r },
+    })
     if (r.new_messages && r.new_messages.length) {
       await self.batchDecodeMessages(r.new_messages)
     } else {
