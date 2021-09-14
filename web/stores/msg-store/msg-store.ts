@@ -12,6 +12,7 @@ export const MsgStoreModel = types
   .extend(withEnvironment)
   .actions((self) => ({
     getMessages: async (forceMore: boolean): Promise<any> => await actions.getMessages(self as MsgStore, forceMore),
+    restoreMessages: async (): Promise<any> => await actions.restoreMessages(self as MsgStore),
     seeChat: async (id: number): Promise<any> => await actions.seeChat(self as MsgStore, id),
   }))
   .views((self) => ({
