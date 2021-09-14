@@ -1,4 +1,4 @@
-import { decodeMessages } from 'stores/msgHelpers'
+import { decodeMessages, orgMsgsFromExisting } from 'stores/msg-store'
 import { Msg, MsgStore } from '..'
 
 export const batchDecodeMessages = async (self: MsgStore, msgs: Msg[]) => {
@@ -16,6 +16,10 @@ export const batchDecodeMessages = async (self: MsgStore, msgs: Msg[]) => {
     name: 'batchDecodeMessages',
     value: { decodedMsgs, first10, rest },
   })
+
+  // const self.messages
+  // const watsThis = orgMsgsFromExisting(self.messages.values(), decodedMsgs)
+
   // this.messages = orgMsgsFromExisting(this.messages, decodedMsgs)
   // console.log('OK! FIRST 10!')
 

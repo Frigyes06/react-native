@@ -154,7 +154,7 @@ export function contactForConversation(chat: Chat, contacts: Contact[], myid: nu
 export function sortChats(chatsToShow, messages) {
   console.tron.display({
     name: 'sortChats',
-    preview: `before`,
+    preview: `Starting to sort ${chatsToShow.length} chats and ${messages.length} messages`,
     value: { chatsToShow, messages },
   })
   chatsToShow.sort((a, b) => {

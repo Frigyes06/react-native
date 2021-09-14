@@ -1,10 +1,10 @@
 // import Toast from 'react-native-simple-toast'
 // import { contactStore } from './contacts'
-import * as e2e from '../crypto/e2e'
+import * as e2e from '../../crypto/e2e'
 // import { chatStore } from './chats'
 // import { userStore } from './user'
-import { constants } from '../constants'
-import { Msg, MAX_MSGS_PER_CHAT } from './msg-store'
+import { constants } from '../../constants'
+import { Msg, MAX_MSGS_PER_CHAT } from './msg-models'
 // import { Msg, MAX_MSGS_PER_CHAT } from './msg'
 
 // export async function encryptText({ contact_id, text }) {
@@ -158,13 +158,28 @@ export function putInReverse(allms, decoded) {
   return allms
 }
 
+// Let's add comments to see what the fuck is going on here.
 export function putIn(orged, msg, chatID) {
+  // Return if no chatID, allowing 0
   if (!(chatID || chatID === 0)) return
+  // If the map of chatrooms already has this chatID...
   if (orged[chatID]) {
+    // Return if this message isn't an array
     if (!Array.isArray(orged[chatID])) return
+    /**
+     * "The findIndex() method returns the index of the first element in the array that satisfies the
+     * provided testing function. Otherwise, it returns -1, indicating that no element passed the test.""
+     * Also - "The findIndex() method executes the callbackFn function once for every index in the array
+     * until it finds the one where callbackFn returns a truthy value."
+     * So we're using unnecessary iteration to kinda replicate on a map-like object what a map should already do(?)
+     * IF THE MESSAGE ISN'T FOUND, IT MEANS IT DID {NUM_MESSAGES} LOOPS - FOR EACH MESSAGE!
+     */
     const idx = orged[chatID].findIndex((m) => m.id === msg.id)
+    // ID not found, so message is not in this blob of messages
     if (idx === -1) {
+      // Add to the beginning of the chat array a skinnier version of this message (no chat obj or remote_message_content)
       orged[chatID].unshift(skinny(msg))
+      // If this chatroom now exceeds the number of max_msgs, remove one
       if (orged[chatID].length > MAX_MSGS_PER_CHAT) {
         orged[chatID].pop() // remove the oldest msg if too many
       }
