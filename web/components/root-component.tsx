@@ -17,12 +17,8 @@ export const RootComponent = () => {
         instantiateRelay(
           user.currentIP,
           user.authToken,
-          function () {
-            ui.setConnected(true)
-          },
-          function () {
-            ui.setConnected(false)
-          },
+          () => ui.setConnected(true),
+          () => ui.setConnected(false),
           () => resetIP()
         )
       }
