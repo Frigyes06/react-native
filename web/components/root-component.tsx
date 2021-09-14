@@ -1,10 +1,18 @@
 import React, { useEffect } from 'react'
 import { instantiateRelay } from 'api'
+import { AppNavigator, useNavigationPersistence } from 'navigation'
 import { useStores } from 'stores'
+import { webStorage as storage } from 'store/storage'
 import EE, { RESET_IP, RESET_IP_FINISHED } from './utils/ee'
 
 export const RootComponent = () => {
   const { ui, user } = useStores()
+
+  // const {
+  //   initialNavigationState,
+  //   onNavigationStateChange,
+  //   isRestored: isNavigationStateRestored,
+  // } = useNavigationPersistence(storage, NAVIGATION_PERSISTENCE_KEY)
 
   useEffect(() => {
     ;(async () => {
@@ -41,5 +49,11 @@ export const RootComponent = () => {
     EE.emit(RESET_IP_FINISHED)
   }
 
-  return <></>
+  return (
+    <>
+      <AppNavigator
+      // initialState={initialNavigationState} onStateChange={onNavigationStateChange}
+      />
+    </>
+  )
 }
