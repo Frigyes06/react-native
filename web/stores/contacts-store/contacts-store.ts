@@ -11,6 +11,7 @@ export const ContactsStoreModel = types
   .extend(withEnvironment)
   .actions((self) => ({
     addContact: async (v: any): Promise<boolean> => await actions.addContact(self as ContactsStore, v),
+    getContacts: async (): Promise<boolean> => await actions.getContacts(self as ContactsStore),
     updateContact: async (id: number, v: any): Promise<boolean> =>
       await actions.updateContact(self as ContactsStore, id, v),
     setContact(contact: Contact) {
