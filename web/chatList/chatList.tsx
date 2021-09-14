@@ -19,7 +19,7 @@ const ChatList = observer(() => {
   const scid = ui.selectedChat && ui.selectedChat.id
   const scname = ui.selectedChat && ui.selectedChat.name
   return (
-    <Section style={{ width, maxWidth: width, minWidth: width }}>
+    <Section style={{ width, maxWidth: width, minWidth: width, height: '100vh' }}>
       <Inner>
         <Head setWidth={setWidth} width={width} />
         <Chats>
