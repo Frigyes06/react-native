@@ -1,4 +1,5 @@
 import { Instance, SnapshotOut, types } from 'mobx-state-tree'
+import { MsgModel } from '.'
 import { withEnvironment } from '../extensions/with-environment'
 import * as actions from './msg-actions'
 
@@ -6,7 +7,7 @@ export const MsgStoreModel = types
   .model('MsgStore')
   .props({
     lastSeen: types.optional(types.number, 0),
-    messages: types.frozen(),
+    messages: types.optional(types.map(MsgModel), {}),
   })
   .extend(withEnvironment)
   .actions((self) => ({
@@ -16,6 +17,13 @@ export const MsgStoreModel = types
   .views((self) => ({
     filterMessagesByContent(id, something): any {
       return []
+    },
+    lengthOfAllMessages(): number {
+      let l = 0
+      Object.values(self.messages).forEach((msgs) => {
+        l += msgs.length
+      })
+      return l
     },
   }))
 
