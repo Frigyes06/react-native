@@ -2,16 +2,15 @@ import React, { useState, useEffect } from 'react'
 import { Platform } from 'react-native'
 import { RootStore, RootStoreProvider, setupRootStore } from 'stores'
 import { Provider as PaperProvider } from 'react-native-paper'
-import { paperTheme } from 'src/theme'
+import { paperTheme } from '../src/theme'
 import { useTheme } from 'store'
 import { RootComponent } from 'components/root-component'
-
-export const NAVIGATION_PERSISTENCE_KEY = 'NAVIGATION_STATE_2'
 
 const App = () => {
   const [rootStore, setRootStore] = useState<RootStore | undefined>(undefined)
 
-  // Kick off initial async loading actions, like loading fonts and RootStore
+  // Kick off initial async loading actions like setting up rootStore.
+  // Any init actions requiring the store, we do instead in RootComponent.
   useEffect(() => {
     ;(async () => {
       setupRootStore().then(setRootStore)

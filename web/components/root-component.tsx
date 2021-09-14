@@ -5,6 +5,8 @@ import { useStores } from 'stores'
 import { webStorage as storage } from 'store/storage'
 import EE, { RESET_IP, RESET_IP_FINISHED } from './utils/ee'
 
+export const NAVIGATION_PERSISTENCE_KEY = 'NAVIGATION_STATE_2'
+
 export const RootComponent = () => {
   const { ui, user } = useStores()
 
