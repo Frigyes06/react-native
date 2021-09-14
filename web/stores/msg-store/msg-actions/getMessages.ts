@@ -2,6 +2,8 @@ import { MsgStore } from '../msg-store'
 import { relay } from 'api'
 import moment from 'moment'
 
+const DAYS = 7
+
 export const getMessages = async (self: MsgStore, forceMore: boolean) => {
   console.tron.display({
     name: 'getMessages',

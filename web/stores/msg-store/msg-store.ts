@@ -1,11 +1,13 @@
 import { Instance, SnapshotOut, types } from 'mobx-state-tree'
-import { MsgModel } from '.'
+import moment from 'moment'
+import { Msg, MsgModel } from '.'
 import { withEnvironment } from '../extensions/with-environment'
 import * as actions from './msg-actions'
 
 export const MsgStoreModel = types
   .model('MsgStore')
   .props({
+    lastFetched: types.optional(types.number, 0),
     lastSeen: types.optional(types.number, 0),
     messages: types.optional(types.map(MsgModel), {}),
   })
@@ -25,6 +27,30 @@ export const MsgStoreModel = types
         l += msgs.length
       })
       return l
+    },
+    sortAllMsgs(allms: { [k: number]: Msg[] }) {
+      const final = {}
+      let toSort: { [k: number]: Msg[] } = allms || JSON.parse(JSON.stringify(self.messages)) // ??
+
+      console.tron.display({
+        name: 'sortAllMsgs',
+        preview: `Trying to sort...`,
+        value: { toSort },
+      })
+
+      Object.entries(toSort).forEach((entries) => {
+        const k = entries[0]
+        const v: Msg[] = entries[1]
+        v.sort((a, b) => moment(b.date).unix() - moment(a.date).unix())
+        final[k] = v
+      })
+
+      console.tron.display({
+        name: 'sortAllMsgs',
+        preview: `Skipping some set of messages...`,
+        value: { final },
+      })
+      // this.messages = final
     },
   }))
 
