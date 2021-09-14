@@ -15,18 +15,7 @@ const ChatList = observer(() => {
   const { msg, ui, contacts, chats, user } = useStores()
   const maxWidth = 350
   const [width, setWidth] = useState(maxWidth)
-
   const theChats = useChats()
-  console.log('theChats:', theChats)
-  if (theChats.length === 0)
-    return (
-      <Section style={{ width, maxWidth: width, minWidth: width }}>
-        <Inner>
-          <Head setWidth={setWidth} width={width} />
-          <h1 style={{ color: 'white' }}>no chats</h1>
-        </Inner>
-      </Section>
-    )
   const scid = ui.selectedChat && ui.selectedChat.id
   const scname = ui.selectedChat && ui.selectedChat.name
   return (
