@@ -9,6 +9,7 @@ export const UiStoreModel = types
     connected: types.optional(types.boolean, false),
     onchain: types.optional(types.boolean, false),
     extraTextContent: types.optional(types.string, ''),
+    newContact: types.frozen(),
     replyUUID: types.optional(types.string, ''),
     searchTerm: types.optional(types.string, ''),
     selectedChat: types.maybe(types.reference(ChatModel)),
@@ -17,6 +18,9 @@ export const UiStoreModel = types
   })
   .extend(withEnvironment)
   .actions((self) => ({
+    setNewContact(contact: ArrayObject) {
+      self.newContact = contact
+    },
     setOnchain(onchain: boolean) {
       self.onchain = onchain
     },
