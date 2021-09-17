@@ -16,7 +16,7 @@
 
 ### IOS
 
-- `cd ios` and `pod install` to install the dependecies
+- `cd ios` and `pod install` to install the dependencies
 - From project root: `npm run ios` to run IOS app on the IOS simulator
 
 ### Code Formatter
